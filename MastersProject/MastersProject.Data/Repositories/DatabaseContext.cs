@@ -13,6 +13,9 @@ namespace MastersProject.Data.Repositories
     {
          // authentication store
         public DbSet<User> Users { get; set; }
+        public DbSet<Patient> Patients  { get;}
+        public DbSet<SightTest> SightTests { get; set; }
+        public DbSet<Triage> Triages { get; set; }
         public DbSet<ForgotPassword> ForgotPasswords { get; set; }
         
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)

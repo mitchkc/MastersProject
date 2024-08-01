@@ -5,7 +5,8 @@ namespace MastersProject.Data.Entities;
 
 public class SightTest
 {
-    public int Id { get; set; } //primary key
+    public int STId { get; set; } //primary key
+    public DateTime CreatedOn { get; set; } = DateTime.MinValue; //default 
     public int PatientId { get; set; } //foreign key
     public Patient Patient{ get; set; } //help with navigation, is this needed?
     public string History { get; set; }

@@ -30,17 +30,21 @@ namespace MastersProject.Data.Services
         }
 
         // retrieve paged list of users
-        public Paged<User> GetUsers(int page = 1, int size = 10, string orderBy = "id", string direction = "asc")
+        public Paged<User> GetUsers(int page = 1, int size = 10, string orderBy = "uid", string direction = "asc")
         {          
             var query = (orderBy.ToLower(),direction.ToLower()) switch
             {
-                ("id","asc")     => ctx.Users.OrderBy(r => r.Id),
-                ("id","desc")    => ctx.Users.OrderByDescending(r => r.Id),
-                ("name","asc")   => ctx.Users.OrderBy(r => r.Name),
-                ("name","desc")  => ctx.Users.OrderByDescending(r => r.Name),
+                ("uid","asc")     => ctx.Users.OrderBy(r => r.Uid),
+                ("uid","desc")    => ctx.Users.OrderByDescending(r => r.Uid),
+                ("forename","asc")   => ctx.Users.OrderBy(r => r.Forename),
+                ("forename","desc")  => ctx.Users.OrderByDescending(r => r.Forename),
+                ("surname", "asc") => ctx.Users.OrderBy(r => r.Surname),
+                ("surname", "desc") => ctx.Users.OrderByDescending(r => r.Surname),
                 ("email","asc")  => ctx.Users.OrderBy(r => r.Email),
                 ("email","desc") => ctx.Users.OrderByDescending(r => r.Email),
-                _                => ctx.Users.OrderBy(r => r.Id)
+                ("age", "asc") => ctx.Users.OrderBy(r => r.Age),
+                ("age", "desc") => ctx.Users.OrderByDescending( r => r.Age),
+                _                => ctx.Users.OrderBy(r => r.Uid)
             };
 
             return query.ToPaged(page,size,orderBy,direction);
@@ -49,11 +53,11 @@ namespace MastersProject.Data.Services
         // Retrive User by Id 
         public User GetUser(int id)
         {
-            return ctx.Users.FirstOrDefault(s => s.Id == id);
+            return ctx.Users.FirstOrDefault(s => s.Uid == id);
         }
 
         // Add a new User checking a User with same email does not exist
-        public User AddUser(string name, string email, string password, Role role)
+        public User AddUser(string forename, string surname, string email, string password, string address, string gender, DateTime dob, string mobile, string homeNumber, Role role)
         {     
             var existing = GetUserByEmail(email);
             if (existing != null)
@@ -63,9 +67,15 @@ namespace MastersProject.Data.Services
 
             var user = new User
             {            
-                Name = name,
+                Forename = forename,
+                Surname = surname,
                 Email = email,
                 Password = Hasher.CalculateHash(password), // can hash if required 
+                Address = address,
+                Gender = gender,
+                DoB = dob,
+                MobileNumber = mobile,
+                HomeNumber = homeNumber,
                 Role = role              
             };
             ctx.Users.Add(user);
@@ -90,20 +100,26 @@ namespace MastersProject.Data.Services
         public User UpdateUser(User updated)
         {
             // verify the User exists
-            var User = GetUser(updated.Id);
+            var User = GetUser(updated.Uid);
             if (User == null)
             {
                 return null;
             }
             // verify email address is registered or available to this user
-            if (!IsEmailAvailable(updated.Email, updated.Id))
+            if (!IsEmailAvailable(updated.Email, updated.Uid))
             {
                 return null;
             }
             // update the details of the User retrieved and save
-            User.Name = updated.Name;
+            User.Forename = updated.Forename;
+            User.Surname = updated.Surname;
             User.Email = updated.Email;
-            User.Password = Hasher.CalculateHash(updated.Password);  
+            User.Password = Hasher.CalculateHash(updated.Password); 
+            User.Address = updated.Address;
+            User.Gender = updated.Gender;
+            User.DoB = updated.DoB;
+            User.MobileNumber = updated.MobileNumber;
+            User.HomeNumber = updated.HomeNumber; 
             User.Role = updated.Role; 
 
             ctx.SaveChanges();          
@@ -119,7 +135,7 @@ namespace MastersProject.Data.Services
         // Verify if email is available or registered to specified user
         public bool IsEmailAvailable(string email, int userId)
         {
-            return ctx.Users.FirstOrDefault(u => u.Email == email && u.Id != userId) == null;
+            return ctx.Users.FirstOrDefault(u => u.Email == email && u.Uid != userId) == null;
         }
 
         public IList<User> GetUsersQuery(Func<User,bool> q)

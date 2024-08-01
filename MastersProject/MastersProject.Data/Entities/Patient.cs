@@ -12,11 +12,12 @@ public class Patient
     public string Email { get; set; }
     public string Address { get; set; }
     public string Gender { get; set; }
-    public DateOnly Dob { get; set; }
+    public DateTime Dob { get; set; }
+    public int Age => (DateTime.Now - Dob).Days/365;
     public string Mobile { get; set; }
     public string HomeNumber { get; set; }
     public string GPName { get; set; }
     public string GPAddress { get; set; }
     public string PatientType { get; set; }
-    public Role Opt { get; set; }
+    public Opt Opt { get; set; }
 }

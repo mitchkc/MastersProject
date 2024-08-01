@@ -13,12 +13,12 @@ namespace MastersProject.Data.Services
         // ---------------- User Management --------------
         IList<User> GetUsers();
         Paged<User> GetUsers(int page=1, int size=20, string orderBy="id", string direction="asc");
-        User GetUser(int id);
+        User GetUser(int uid);
         User GetUserByEmail(string email);
         bool IsEmailAvailable(string email, int userId);
-        User AddUser(string name, string email, string password, Role role);
+        User AddUser(string forename, string surname, string email, string password, string address, string gender, DateTime dob, string mobile, string homenumber, Role role);
         User UpdateUser(User user);
-        bool DeleteUser(int id);
+        bool DeleteUser(int uid);
         User Authenticate(string email, string password);
         string ForgotPassword(string email);
         User ResetPassword(string email, string token, string password);
