@@ -17,5 +17,6 @@ namespace  MastersProject.Data.Services
         Patient AddPatient(string forename, string surname, string email, string address, string gender, DateTime dob, string mobile, string homenumber, string gpName, string gpAddress, string patientType, Opt role);
         Patient UpdatePatient(Patient patient);
         bool DeletePatient(int pid);
+    
     }
 }

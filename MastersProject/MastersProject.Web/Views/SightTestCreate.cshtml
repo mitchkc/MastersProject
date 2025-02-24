@@ -1,0 +1,585 @@
+@model SightTest
+
+<div class="card rounded shadow p-4">
+
+    <div class="border-bottom d-flex align-items-center justify-content-between mb-3">
+        <h3 class="text-primary">Create New Sight Test</h3>
+    </div>
+
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <input type="hidden" asp-for="PatientId" />
+
+        <div class="mt-3">
+            <label asp-for="History" class="form-label"></label>
+            <textarea rows="5" asp-for="History" class="form-control"></textarea> 
+            <span asp-validation-for="History" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="GeneralHealth" class="form-label"></label>
+            <textarea rows="5" asp-for="GeneralHealth" class="form-control"></textarea> 
+            <span asp-validation-for="GeneralHealth" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="OphthalmicHistory" class="form-label"></label>
+            <textarea rows="5" asp-for="OphthalmicHistory" class="form-control"></textarea> 
+            <span asp-validation-for="OphthalmicHistory" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="Occupation" class="form-label"></label>
+            <input asp-for="Occupation" class="form-control" />
+            <span asp-validation-for="Occupation" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="Driver" class="form-label"></label>
+            <input asp-for="Driver" class="form-control" />
+            <span asp-validation-for="Driver" class="text-danger"></span>
+        </div>
+
+
+
+        @*------------------------------ Visions/VA/Assessment -----------------------------*@
+
+        <div class="mt-3">
+            <label asp-for="CurrentSphereRE" class="form-label"></label>
+            <input asp-for="CurrentSphereRE" class="form-control" />
+            <span asp-validation-for="Sphere" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="CurrentSphereLE" class="form-label"></label>
+            <input asp-for="CurrentSphereLE" class="form-control" />
+            <span asp-validation-for="CurrentSphereLE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="CurrentCylRE" class="form-label"></label>
+            <input asp-for="CurrentCylRE" class="form-control" />
+            <span asp-validation-for="CurrentCylRE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="CurrentCylLE" class="form-label"></label>
+            <input asp-for="CurrentCylLE" class="form-control" />
+            <span asp-validation-for="CurrentCylLE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="CurrentAxisRE" class="form-label"></label>
+            <input asp-for="CurrentAxisRE" class="form-control" />
+            <span asp-validation-for="CurrentAxisRE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="CurrentAxisLE" class="form-label"></label>
+            <input asp-for="CurrentAxisLE" class="form-control" />
+            <span asp-validation-for="CurrentAxisLE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="CurrentAddRE" class="form-label"></label>
+            <input asp-for="CurrentAddRE" class="form-control" />
+            <span asp-validation-for="CurrentAddRE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="CurrentAddLE" class="form-label"></label>
+            <input asp-for="CurrentAddLE" class="form-control" />
+            <span asp-validation-for="CurrentAddLE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="DistanceVisionRE" class="form-label"></label>
+            <input asp-for="DistanceVisionRE" class="form-control" />
+            <span asp-validation-for="DistanceVisionRE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="DistanceVisionLE" class="form-label"></label>
+            <input asp-for="DistanceVisionLE" class="form-control" />
+            <span asp-validation-for="DistanceVisionLE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="DistanceVisionBinoc" class="form-label"></label>
+            <input asp-for="DistanceVisionBinoc" class="form-control" />
+            <span asp-validation-for="DistanceVisionBinoc" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="DistanceVARE" class="form-label"></label>
+            <input asp-for="DistanceVARE" class="form-control" />
+            <span asp-validation-for="DistanceVARE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="DistanceVALE" class="form-label"></label>
+            <input asp-for="DistanceVALE" class="form-control" />
+            <span asp-validation-for="DistanceVALE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="DistanceVABinoc" class="form-label"></label>
+            <input asp-for="DistanceVABinoc" class="form-control" />
+            <span asp-validation-for="DistanceVABinoc" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="NearVisionRE" class="form-label"></label>
+            <input asp-for="NearVisionRE" class="form-control" />
+            <span asp-validation-for="NearVisionRE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="NearVisionLE" class="form-label"></label>
+            <input asp-for="NearVisionLE" class="form-control" />
+            <span asp-validation-for="NearVisionLE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="NearVisionBinoc" class="form-label"></label>
+            <input asp-for="NearVisionBinoc" class="form-control" />
+            <span asp-validation-for="NearVisionBinoc" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="NearVARE" class="form-label"></label>
+            <input asp-for="NearVARE" class="form-control" />
+            <span asp-validation-for="NearVARE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="NearVALE" class="form-label"></label>
+            <input asp-for="NearVALE" class="form-control" />
+            <span asp-validation-for="NearVALE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="NearVABinoc" class="form-label"></label>
+            <input asp-for="NearVABinoc" class="form-control" />
+            <span asp-validation-for="NearVABinoc" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="OMBNearUnaided" class="form-label"></label>
+            <input asp-for="OMBNearUnaided" class="form-control" />
+            <span asp-validation-for="OMBNearUnaided" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="OMBNearAided" class="form-label"></label>
+            <input asp-for="OMBNearAided" class="form-control" />
+            <span asp-validation-for="OMBNearAided" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="OMBDistUnaided" class="form-label"></label>
+            <input asp-for="OMBDistUnaided" class="form-control" />
+            <span asp-validation-for="OMBDistUnaided" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="OMBDistAided" class="form-label"></label>
+            <input asp-for="OMBDistAided" class="form-control" />
+            <span asp-validation-for="OMBDistAided" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="OMBNotes" class="form-label"></label>
+            <input asp-for="OMBNotes" class="form-control" />
+            <span asp-validation-for="OMBNotes" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="AdditionalTests" class="form-label"></label>
+            <textarea rows="5" asp-for="AdditionalTests" class="form-control"></textarea>
+            <span asp-validation-for="AdditionalTests" class="text-danger"></span>
+        </div>
+
+
+
+        @*-------------------------------------- Refraction ---------------------------------*@
+
+        <div class="mt-3">
+            <label asp-for="AutoRefractSphereRE" class="form-label"></label>
+            <input asp-for="AutoRefractSphereRE" class="form-control" />
+            <span asp-validation-for="AutoRefractSphereRE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="AutoRefractSphereLE" class="form-label"></label>
+            <input asp-for="AutoRefractSphereLE" class="form-control" />
+            <span asp-validation-for="AutoRefractSphereLE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="AutorefractCylRE" class="form-label"></label>
+            <input asp-for="AutorefractCylRE" class="form-control" />
+            <span asp-validation-for="AutorefractCylRE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="AutorefractCylLE" class="form-label"></label>
+            <input asp-for="AutorefractCylLE" class="form-control" />
+            <span asp-validation-for="AutorefractCylLE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="AutorefractAxisRE" class="form-label"></label>
+            <input asp-for="AutorefractAxisRE" class="form-control" />
+            <span asp-validation-for="AutorefractAxisRE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="AutorefractAxisLE" class="form-label"></label>
+            <input asp-for="AutorefractAxisLE" class="form-control" />
+            <span asp-validation-for="AutorefractAxisLE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="AutorefractAddRE" class="form-label"></label>
+            <input asp-for="AutorefractAddRE" class="form-control" />
+            <span asp-validation-for="AutorefractAddRE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="AutorefractAddLE" class="form-label"></label>
+            <input asp-for="AutorefractAddLE" class="form-control" />
+            <span asp-validation-for="AutorefractAddLE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="RetSphereRE" class="form-label"></label>
+            <input asp-for="RetSphereRE" class="form-control" />
+            <span asp-validation-for="RetSphereRE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="RetSphereLE" class="form-label"></label>
+            <input asp-for="RetSphereLE" class="form-control" />
+            <span asp-validation-for="RetSphereLE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="RetCylRE" class="form-label"></label>
+            <input asp-for="RetCylRE" class="form-control" />
+            <span asp-validation-for="RetCylRE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="RetCylLE" class="form-label"></label>
+            <input asp-for="RetCylLE" class="form-control" />
+            <span asp-validation-for="RetCylLE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="RetAxisRE" class="form-label"></label>
+            <input asp-for="RetAxisRE" class="form-control" />
+            <span asp-validation-for="RetAxisRE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="RetAxisLE" class="form-label"></label>
+            <input asp-for="RetAxisLE" class="form-control" />
+            <span asp-validation-for="RetAxisLE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="DropsUsed" class="form-label"></label> @*check box*@
+            <input asp-for="DropsUsed" class="form-control" />
+            <span asp-validation-for="DropsUsed" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="SubjectSphereRE" class="form-label"></label>
+            <input asp-for="SubjectSphereRE" class="form-control" />
+            <span asp-validation-for="SubjectSphereRE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="SubjectSphereLE" class="form-label"></label>
+            <input asp-for="SubjectSphereLE" class="form-control" />
+            <span asp-validation-for="SubjectSphereLE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="SubjectCylRE" class="form-label"></label>
+            <input asp-for="SubjectCylRE" class="form-control" />
+            <span asp-validation-for="SubjectCylRE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="SubjectCylLE" class="form-label"></label>
+            <input asp-for="SubjectCylLE" class="form-control" />
+            <span asp-validation-for="SubjectCylLE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="SubjectAxisRE" class="form-label"></label>
+            <input asp-for="SubjectAxisRE" class="form-control" />
+            <span asp-validation-for="SubjectAxisRE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="SubjectAxisLE" class="form-label"></label>
+            <input asp-for="SubjectAxisLE" class="form-control" />
+            <span asp-validation-for="SubjectAxisLE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="SubjectAddRE" class="form-label"></label>
+            <input asp-for="SubjectAddRE" class="form-control" />
+            <span asp-validation-for="SubjectAddRE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="SubjectAddLE" class="form-label"></label>
+            <input asp-for="SubjectAddLE" class="form-control" />
+            <span asp-validation-for="SubjectAddLE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="RefractionNotes" class="form-label"></label>
+            <input asp-for="RefractionNotes" class="form-control" />
+            <span asp-validation-for="RefractionNotes" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="FinalVARE" class="form-label"></label>
+            <input asp-for="FinalVARE" class="form-control" />
+            <span asp-validation-for="FinalVARE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="FinalVALE" class="form-label"></label>
+            <input asp-for="FinalVALE" class="form-control" />
+            <span asp-validation-for="FinalVALE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="FinalVABinoc" class="form-label"></label>
+            <input asp-for="FinalVABinoc" class="form-control" />
+            <span asp-validation-for="FinalVABinoc" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="FinalOMBDist" class="form-label"></label>
+            <input asp-for="FinalOMBDist" class="form-control" />
+            <span asp-validation-for="FinalOMBDist" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="FinalOMBNear" class="form-label"></label>
+            <input asp-for="FinalOMBNear" class="form-control" />
+            <span asp-validation-for="FinalOMBNear" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="FinalOMBNotes" class="form-label"></label>
+            <input asp-for="FinalOMBNotes" class="form-control" />
+            <span asp-validation-for="FinalOMBNotes" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="FinalSphereRE" class="form-label"></label>
+            <input asp-for="FinalSphereRE" class="form-control" />
+            <span asp-validation-for="FinalSphereRE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="FinalSphereLE" class="form-label"></label>
+            <input asp-for="FinalSphereLE" class="form-control" />
+            <span asp-validation-for="FinalSphereLE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="FinalCylRE" class="form-label"></label>
+            <input asp-for="FinalCylRE" class="form-control" />
+            <span asp-validation-for="FinalCylRE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="FinalAxisRE" class="form-label"></label>
+            <input asp-for="FinalAxisRE" class="form-control" />
+            <span asp-validation-for="FinalAxisRE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="FinalAxisLE" class="form-label"></label>
+            <input asp-for="FinalAxisLE" class="form-control" />
+            <span asp-validation-for="FinalAxisLE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="AdditionRefractionTests" class="form-label"></label>
+            <textarea rows="5" asp-for="AdditionalRefractionTests" class="form-control"></textarea>
+            <span asp-validation-for="AdditionalRefractionTests" class="text-danger"></span>
+        </div>
+
+
+        @*------------------------------ Ocular Examination -----------------------------*@
+
+        <div class="mt-3">
+            <label asp-for="Dilated" class="form-label"></label>            @*checkbox*@
+            <input asp-for="Dilated" class="form-control" />
+            <span asp-validation-for="Dilated" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="DrugUsed" class="form-label"></label>
+            <input asp-for="DrugUsed" class="form-control" />
+            <span asp-validation-for="DrugUsed" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="TimeDrugUsed" class="form-label"></label>
+            <input asp-for="TimeDrugUsed" class="form-control" />
+            <span asp-validation-for="TimeDrugUsed" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="PupilExam" class="form-label"></label>
+            <textarea rows="3" asp-for="PupilExam" class="form-control"></textarea>
+            <span asp-validation-for="PupilExam" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="IOPRE" class="form-label"></label>
+            <input asp-for="IOPRE" class="form-control" />
+            <span asp-validation-for="IOPRE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="IOPLE" class="form-label"></label>
+            <input asp-for="IOPLE" class="form-control" />
+            <span asp-validation-for="IOPLE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="IOPInstrument" class="form-label"></label>
+            <input asp-for="IOPInstrument" class="form-control" />
+            <span asp-validation-for="IOPInstrument" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="IOPTime" class="form-label"></label>
+            <input asp-for="IOPTime" class="form-control" />
+            <span asp-validation-for="IOPTime" class="text-danger"></span>
+        </div>
+
+
+        @*-----------External-------------*@
+
+        <div class="mt-3">
+            <label asp-for="Adnexa" class="form-label"></label>
+            <textarea rows="4" asp-for="Adnexa" class="form-control"></textarea>
+            <span asp-validation-for="Adnexa" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="LidsLashes" class="form-label"></label>
+            <textarea rows="4" asp-for="LidsLashes" class="form-control"></textarea>
+            <span asp-validation-for="LidsLashes" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="Conjunctiva" class="form-label"></label>
+            <textarea rows="4" asp-for="Conjunctiva" class="form-control"></textarea> 
+            <span asp-validation-for="Conjunctiva" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="Cornea" class="form-label"></label>
+            <textarea rows="4" asp-for="Cornea" class="form-control"></textarea> 
+            <span asp-validation-for="Cornea" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="Lens" class="form-label"></label>
+            <textarea rows="4" asp-for="Lens" class="form-control"></textarea> 
+            <span asp-validation-for="Lens" class="text-danger"></span>
+        </div>
+
+
+        @*------Internal--------*@
+
+        <div class="mt-3">
+            <label asp-formaction="ACExam" class="form-label"></label>
+            <textarea rows="4" asp-for="ACExam" class="form-control"></textarea>
+            <span asp-asp-validation-for="ACExam" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="Vitreous" class="form-label"></label>
+            <textarea rows="4" asp-for="Vitreous" class="form-control"></textarea> 
+            <span asp-validation-for="Vitreous" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="OpticNerveE" class="form-label"></label>
+            <textarea rows="4" asp-for="OpticNerveE" class="form-control"></textarea> 
+            <span asp-validation-for="OpticNerveE" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="Macula" class="form-label"></label>
+            <textarea rows="4" asp-for="Macula" class="form-control"></textarea> 
+            <span asp-validation-for="Macula" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="Vessels" class="form-label"></label>
+            <textarea rows="4" asp-for="Vessels" class="form-control"></textarea> 
+            <span asp-validation-for="Vessels" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="Periphery" class="form-label"></label>
+            <textarea rows="4" asp-for="Periphery" class="form-control"></textarea> 
+            <span asp-validation-for="Periphery" class="text-danger"></span>
+        </div>
+
+        @*Illsutration box?*@
+
+        <div class="mt-3">
+            <label asp-for="AdditionalTestsFinal" class="form-label"></label>
+            <textarea rows="5" asp-for="AdditionalTestsFinal" class="form-control"></textarea>
+            <span asp-validation-for="AdditionalTestsFinal" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="Advice" class="form-label"></label>
+            <textarea rows="5" asp-for="Advice" class="form-control"></textarea> 
+            <span asp-validation-for="Advice" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="Reccommendations" class="form-label"></label>
+            <textarea rows="5" asp-for="Reccommendations" class="form-control"></textarea>
+            <span asp-validation-for="Reccommendations" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="Referrals" class="form-label"></label>
+            <textarea rows="4" asp-for="Referrals" class="form-control"></textarea>
+            <span asp-validation-for="Referrals" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="Recall" class="form-label"></label>
+            <input asp-for="Recall" class="form-control" />
+            <span asp-validation-for="Recall" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <button type="submit" class="btn btn-primary" aria-label="create">Finish Record</button>
+            <a class="btn btn-secondary" asp-action="Index" aria-label="cancel">Cancel</a>
+        </div>
+
+    </form>
+</div>

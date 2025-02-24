@@ -4,6 +4,8 @@ namespace MastersProject.Data.Entities;
 
 public class Triage
 {
+    public int TriageId { get; set;}
+    public DateTime CreatedOn { get; set;} = DateTime.MinValue; //default
     public string PxLocation { get; set; }
     public string LastST { get; set; }
     public string LastSTLocation { get; set; }
@@ -17,7 +19,7 @@ public class Triage
     public int Photosensitivity { get; set; } // checkbox; checked = 1, not checked = 0
     public int VisionAffected { get; set; } // checkbox; checked = 1, not checked = 0
     public int CLWearer { get; set; } // checkbox; checked = 1, not checked = 0
-    public string CLWear { get; set; }  // if flashes checkbox selected open this box, if not leave greyed out?
+    public string CLInfo { get; set; }  // if cl wearer checkbox selected open this box, if not leave greyed out?
     public int Flashes { get; set; } // checkbox; checked = 1, not checked = 0
     public string FlashesNew { get; set; } // if flashes checkbox selected open the following boxes, if not leave greyed out?
     public string FlashWorsening { get; set; }

@@ -18,7 +18,7 @@ namespace MastersProject.Data.Services
             ctx.Initialise();
         }
 
-        // ----------------- Patient Operations --------------------- //
+        // ------------------------------- Patient Operations ----------------------------- //
 
         //retrieve list of patients 
         public IList<Patient> GetPatients()
@@ -37,8 +37,6 @@ namespace MastersProject.Data.Services
                 ("forename","desc")  => ctx.Patients.OrderByDescending(r => r.Forename),
                 ("surname", "asc") => ctx.Patients.OrderBy(r => r.Surname),
                 ("surname", "desc") => ctx.Patients.OrderByDescending(r => r.Surname),
-                ("email","asc")  => ctx.Patients.OrderBy(r => r.Email),
-                ("email","desc") => ctx.Patients.OrderByDescending(r => r.Email),
                 ("age", "asc") => ctx.Patients.OrderBy(r => r.Age),
                 ("age", "desc") => ctx.Patients.OrderByDescending( r => r.Age),
                 _                => ctx.Patients.OrderBy(r => r.Pid)

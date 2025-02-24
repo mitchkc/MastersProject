@@ -124,7 +124,7 @@ public class UserController : BaseController
         } 
 
         // update user details and call service
-        user.Name = m.Name;
+        user.Forename = m.Name;
         user.Email = m.Email; 
         var updated = _svc.UpdateUser(user);
 

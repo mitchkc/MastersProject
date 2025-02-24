@@ -40,10 +40,10 @@ namespace MastersProject.Data.Services
                 ("forename","desc")  => ctx.Users.OrderByDescending(r => r.Forename),
                 ("surname", "asc") => ctx.Users.OrderBy(r => r.Surname),
                 ("surname", "desc") => ctx.Users.OrderByDescending(r => r.Surname),
-                ("email","asc")  => ctx.Users.OrderBy(r => r.Email),
-                ("email","desc") => ctx.Users.OrderByDescending(r => r.Email),
                 ("age", "asc") => ctx.Users.OrderBy(r => r.Age),
                 ("age", "desc") => ctx.Users.OrderByDescending( r => r.Age),
+                ("role", "asc") => ctx.Users.OrderBy(r => r.Role),
+                ("role", "desc") => ctx.Users.OrderByDescending(r => r.Role),
                 _                => ctx.Users.OrderBy(r => r.Uid)
             };
 
