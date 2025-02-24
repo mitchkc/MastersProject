@@ -1,0 +1,1347 @@
+@model CreateSTViewModel
+
+<div class="card rounded shadow mt-5 p-4 mb-5">
+
+    <div class="position-absolute top-0 start-50 translate-middle rounded-circle bg-dark p-2">
+        <svg class="text-white" width="28" height="28" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+            fill="currentColor" class="bi bi-eyeglasses" viewBox="0 0 16 16">
+            <path
+                d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0" />
+        </svg>
+    </div>
+
+    <h1 class="my-3 mx-auto">Create New Sight Test</h1>
+
+
+
+
+    <form asp-action="SightTestCreate">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <input type="hidden" asp-for="PatientId" />
+
+        <ul class="nav nav-tabs" role="tablist">
+
+            <li role="presentation" class="active"><a href="#tab1" role="tab" data-toggle="tab">
+                    <h5>History</h5>
+                </a></li>
+
+            <li class="ms-4" role="presentation"><a href="#tab2" role="tab" data-toggle="tab">
+                    <h5>Visions and VA</h5>
+                </a></li>
+
+            <li class="ms-4" role="presentation"><a href="#tab3" role="tab" data-toggle="tab">
+                    <h5>Refraction</h5>
+                </a></li>
+
+            <li class="ms-4" role="presentation"><a href="#tab4" role="tab" data-toggle="tab">
+                    <h5>Health Assessment</h5>
+                </a></li>
+
+            <li class="ms-4" role="presentation"><a href="#tab5" data-toggle="tab">
+                    <h5>Final</h5>
+                </a></li>
+
+        </ul>
+
+        <div class="tab-content">
+
+            <div role="tabpanel" class="tab-pane active" id="tab1">
+                <h3 class="mt-3"><u>History</u></h3>
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label asp-for="History" class="form-label"></label>
+                        <textarea rows="5" asp-for="History" class="form-control"></textarea>
+                        <span asp-validation-for="History" class="text-danger"></span>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="PrevHistory">Previous</label>
+                        <textarea rows="5" class="form-control" id="PrevHistory" name="PrevHistory" readonly
+                            style="background-color: #e9ecef;">@Model.PrevHistory</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label asp-for="GeneralHealth" class="form-label">General Health</label>
+                        <textarea rows="5" asp-for="GeneralHealth" class="form-control"></textarea>
+                        <span asp-validation-for="GeneralHealth" class="text-danger"></span>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="PrevGeneralHealth">Previous</label>
+                        <textarea rows="5" class="form-control" id="PrevGeneralHealth" name="PrevGeneralHealth" readonly
+                            style="background-color: #e9ecef;">@Model.PrevGeneralHealth</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label asp-for="OphthalmicHistory" class="form-label">Ophthalmic History</label>
+                        <textarea rows="5" asp-for="OphthalmicHistory" class="form-control"></textarea>
+                        <span asp-validation-for="OphthalmicHistory" class="text-danger"></span>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="PrevOphthalmicHistory">Previous</label>
+                        <textarea rows="5" class="form-control" id="PrevOphthalmicHistory" name="PrevOphthalmicHistory"
+                            readonly style="background-color: #e9ecef;">@Model.PrevOphthalmicHistory</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label asp-for="Occupation" class="form-label">Occupation</label>
+                        <input asp-for="Occupation" class="form-control" />
+                        <span asp-validation-for="Occupation" class="text-danger"></span>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="PrevOccupation">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevOccupation" name="PrevOccupation" readonly
+                            style="background-color: #e9ecef;">@Model.PrevOccupation</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label asp-for="Driver" class="form-label">Driver</label>
+                        <select asp-for="Driver" class="form-control">
+                            <option value="" disabled selected>Select..</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                        <span asp-validation-for="Driver" class="text-danger"></span>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="PrevDriver">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevDriver" name="PrevDriver" readonly
+                            style="background-color: #e9ecef;">@Model.PrevDriver</textarea>
+                    </div>
+                </div>
+
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label asp-for="Smoker" class="form-label">Smoker</label>
+                        <select asp-for="Smoker" class="form-control">
+                            <option value="" disabled selected>Select..</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                        <span asp-validation-for="Smoker" class="text-danger"></span>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="PrevSmoker">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevSmoker" name="PrevSmoker" readonly
+                            style="background-color: #e9ecef;">@Model.PrevSmoker</textarea>
+                    </div>
+                </div>
+            </div>
+
+
+            @*------------------------------------ Vis + VA ----------------------------------------------------*@
+
+            <div role="tabpanel" class="tab-pane" id="tab2">
+                <h3 class="mt-3"><u>Visions and VA</u></h3>
+
+                <div class="row mt-3">
+                    <div class="col-2">
+                        <label asp-for="CurrentSignR" class="form-label">Current RE</label>
+                        <select asp-for="CurrentSignR" class="form-control">
+                            <option></option>
+                            <option>+</option>
+                            <option>-</option>
+                        </select>
+                        <span asp-validation-for="CurrentSignR" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="CurrentSphereRE" class="form-label">Sphere</label>
+                        <input asp-for="CurrentSphereRE" class="form-control" />
+                        <span asp-validation-for="CurrentSphereRE" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="CurrentCylRE" class="form-label">Cyl</label>
+                        <input asp-for="CurrentCylRE" class="form-control" />
+                        <span asp-validation-for="CurrentCylRE" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="CurrentAxisRE" class="form-label">Axis</label>
+                        <input asp-for="CurrentAxisRE" class="form-control" />
+                        <span asp-validation-for="CurrentAxisRE" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="CurrentAddRE" class="form-label">Add</label>
+                        <input asp-for="CurrentAddRE" class="form-control" />
+                        <span asp-validation-for="CurrentAddRE" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <label for="PrevCurrentSignR">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevCurrentSignR" name="PrevCurrentSignR" readonly
+                            style="background-color: #e9ecef;">@Model.PrevCurrentSignR</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevCurrentSphereRE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevCurrentSphereRE" name="PrevCurrentSphereRE"
+                            readonly style="background-color: #e9ecef;">@(Model.PrevCurrentSphereRE.HasValue ? Model.PrevCurrentSphereRE.Value.ToString("F2") : "N/A")</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevCurrentCylRE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevCurrentCylRE" name="PrevCurrentCylRE" readonly
+                            style="background-color: #e9ecef;">@(Model.PrevCurrentCylRE.HasValue ? Model.PrevCurrentCylRE.Value.ToString("F2") : "N/A")</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevCurrentAxisRE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevCurrentAxisRE" name="PrevCurrentAxisRE" readonly
+                            style="background-color: #e9ecef;">@Model.PrevCurrentAxisRE</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevCurrentAddRE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevCurrentAddRE" name="PrevCurrentAddRE" readonly
+                            style="background-color: #e9ecef;">@(Model.PrevCurrentAddRE.HasValue ? Model.PrevCurrentAddRE.Value.ToString("F2") : "N/A")</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-2">
+                        <label asp-for="CurrentSignL" class="form-label">Current LE</label>
+                        <select asp-for="CurrentSignL" class="form-control">
+                            <option></option>
+                            <option>+</option>
+                            <option>-</option>
+                        </select>
+                        <span asp-validation-for="CurrentSignL" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="CurrentSphereLE" class="form-label">Sphere</label>
+                        <input asp-for="CurrentSphereLE" class="form-control" />
+                        <span asp-validation-for="CurrentSphereLE" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="CurrentCylLE" class="form-label">Cyl</label>
+                        <input asp-for="CurrentCylLE" class="form-control" />
+                        <span asp-validation-for="CurrentCylLE" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="CurrentAxisLE" class="form-label">Axis</label>
+                        <input asp-for="CurrentAxisLE" class="form-control" />
+                        <span asp-validation-for="CurrentAxisLE" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="CurrentAddLE" class="form-label">Add</label>
+                        <input asp-for="CurrentAddLE" class="form-control" />
+                        <span asp-validation-for="CurrentAddLE" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <label for="PrevCurrentSignL">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevCurrentSignL" name="PrevCurrentSignL" readonly
+                            style="background-color: #e9ecef;">@Model.PrevCurrentSignL</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevCurrentSphereLE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevCurrentSphereLE" name="PrevCurrentSphereLE"
+                            readonly style="background-color: #e9ecef;">@(Model.PrevCurrentSphereLE.HasValue ? Model.PrevCurrentSphereLE.Value.ToString("F2") : "N/A")</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevCurrentCylLE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevCurrentCylLE" name="PrevCurrentCylLE" readonly
+                            style="background-color: #e9ecef;">@(Model.PrevCurrentCylLE.HasValue ? Model.PrevCurrentCylLE.Value.ToString("F2") : "N/A")</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevCurrentAxisLE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevCurrentAxisLE" name="PrevCurrentAxisLE" readonly
+                            style="background-color: #e9ecef;">@Model.PrevCurrentAxisLE</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevCurrentAddLE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevCurrentAddLE" name="PrevCurrentAddLE" readonly
+                            style="background-color: #e9ecef;">@(Model.PrevCurrentAddLE.HasValue ? Model.PrevCurrentAddLE.Value.ToString("F2") : "N/A")</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-2">
+                        <label asp-for="DistanceVisionRE" class="form-label">Distance Vision RE</label>
+                        <input asp-for="DistanceVisionRE" class="form-control" />
+                        <span asp-validation-for="DistanceVisionRE" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="DistanceVisionLE" class="form-label">Distance Vision LE</label>
+                        <input asp-for="DistanceVisionLE" class="form-control" />
+                        <span asp-validation-for="DistanceVisionLE" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="DistanceVisionBinoc" class="form-label">Distance Vision Binoc</label>
+                        <input asp-for="DistanceVisionBinoc" class="form-control" />
+                        <span asp-validation-for="DistanceVisionBinoc" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <label for="PrevDistanceVisionRE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevDistanceVisionRE" name="PrevDistanceVisionRE"
+                            readonly style="background-color: #e9ecef;">@Model.PrevDistanceVisionRE</textarea>
+                    </div>
+                    <div class="col-2">
+                        <label for="PrevDistanceVisionLE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevDistanceVisionLE" name="PrevDistanceVisionLE"
+                            readonly style="background-color: #e9ecef;">@Model.PrevDistanceVisionLE</textarea>
+                    </div>
+                    <div class="col-2">
+                        <label for="PrevDistanceVisionBinoc">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevIOPInstrument" name="PrevIOPInstrument" readonly
+                            style="background-color: #e9ecef;">@Model.PrevIOPInstrument</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-2">
+                        <label asp-for="DistanceVARE" class="form-label">Distance VA RE</label>
+                        <input asp-for="DistanceVARE" class="form-control" />
+                        <span asp-validation-for="DistanceVARE" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="DistanceVALE" class="form-label">Distance VA LE</label>
+                        <input asp-for="DistanceVALE" class="form-control" />
+                        <span asp-validation-for="DistanceVALE" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="DistanceVABinoc" class="form-label">Distance VA Binoc</label>
+                        <input asp-for="DistanceVABinoc" class="form-control" />
+                        <span asp-validation-for="DistanceVABinoc" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <label for="PrevDistanceVARE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevDistanceVARE" name="PrevDistanceVARE" readonly
+                            style="background-color: #e9ecef;">@Model.PrevDistanceVARE</textarea>
+                    </div>
+                    <div class="col-2">
+                        <label for="PrevDistanceVALE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevDistanceVALE" name="PrevDistanceVALE" readonly
+                            style="background-color: #e9ecef;">@Model.PrevDistanceVALE</textarea>
+                    </div>
+                    <div class="col-2">
+                        <label for="PrevDistanceVABinoc">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevDistanceVABinoc" name="PrevDistanceVABinoc"
+                            readonly style="background-color: #e9ecef;">@Model.PrevDistanceVABinoc</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-2">
+                        <label asp-for="NearVisionRE" class="form-label">Near Vision RE</label>
+                        <input asp-for="NearVisionRE" class="form-control" />
+                        <span asp-validation-for="NearVisionRE" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="NearVisionLE" class="form-label">Near Vision LE</label>
+                        <input asp-for="NearVisionLE" class="form-control" />
+                        <span asp-validation-for="NearVisionLE" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="NearVisionBinoc" class="form-label">Near Vision Binoc</label>
+                        <input asp-for="NearVisionBinoc" class="form-control" />
+                        <span asp-validation-for="NearVisionBinoc" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <label for="PrevNearVisionRE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevNearVisionRE" name="PrevNearVisionRE" readonly
+                            style="background-color: #e9ecef;">@Model.PrevNearVisionRE</textarea>
+                    </div>
+                    <div class="col-2">
+                        <label for="PrevNearVisionLE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevNearVisionLE" name="PrevNearVisionLE" readonly
+                            style="background-color: #e9ecef;">@Model.PrevNearVisionLE</textarea>
+                    </div>
+                    <div class="col-2">
+                        <label for="PrevNearVisionBinoc">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevNearVisionBinoc" name="PrevNearVisionBinoc"
+                            readonly style="background-color: #e9ecef;">@Model.PrevNearVisionBinoc</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-2">
+                        <label asp-for="NearVARE" class="form-label">Near VA RE</label>
+                        <input asp-for="NearVARE" class="form-control" />
+                        <span asp-validation-for="NearVARE" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="NearVALE" class="form-label">Near VA LE</label>
+                        <input asp-for="NearVALE" class="form-control" />
+                        <span asp-validation-for="NearVALE" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="NearVABinoc" class="form-label">Near VA Binoc</label>
+                        <input asp-for="NearVABinoc" class="form-control" />
+                        <span asp-validation-for="NearVABinoc" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <label for="PrevNearVARE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevNearVARE" name="PrevNearVARE" readonly
+                            style="background-color: #e9ecef;">@Model.PrevNearVARE</textarea>
+                    </div>
+                    <div class="col-2">
+                        <label for="PrevNearVALE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevNearVALE" name="PrevNearVALE" readonly
+                            style="background-color: #e9ecef;">@Model.PrevNearVALE</textarea>
+                    </div>
+                    <div class="col-2">
+                        <label for="PrevNearVABinoc">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevNearVABinoc" name="PrevNearVABinoc" readonly
+                            style="background-color: #e9ecef;">@Model.PrevNearVABinoc</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-3">
+                        <label asp-for="OMBNearUnaided" class="form-label">OMB Near Unaided</label>
+                        <input asp-for="OMBNearUnaided" class="form-control" />
+                        <span asp-validation-for="OMBNearUnaided" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-3">
+                        <label asp-for="OMBDistUnaided" class="form-label">OMB Dist Unaided</label>
+                        <input asp-for="OMBDistUnaided" class="form-control" />
+                        <span asp-validation-for="OMBDistUnaided" class="text-danger"></span>
+                    </div>
+                    <div class="col-3">
+                        <label for="PrevOMBNearUnaided">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevOMBNearUnaided" name="PrevOMBNearUnaided"
+                            readonly style="background-color: #e9ecef;">@Model.PrevOMBNearUnaided</textarea>
+                    </div>
+                    <div class="col-3">
+                        <label for="PrevOMBDistUnaided">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevOMBDistUnaided" name="PrevOMBDistUnaided"
+                            readonly style="background-color: #e9ecef;">@Model.PrevOMBDistUnaided</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-3">
+                        <label asp-for="OMBNearAided" class="form-label">OMB Near Aided</label>
+                        <input asp-for="OMBNearAided" class="form-control" />
+                        <span asp-validation-for="OMBNearAided" class="text-danger"></span>
+                    </div>
+                    <div class="col-3">
+                        <label asp-for="OMBDistAided" class="form-label">OMB Dist Aided</label>
+                        <input asp-for="OMBDistAided" class="form-control" />
+                        <span asp-validation-for="OMBDistAided" class="text-danger"></span>
+                    </div>
+                    <div class="col-3">
+                        <label for="PrevOMBNearAided">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevOMBNearAided" name="PrevOMBNearAided" readonly
+                            style="background-color: #e9ecef;">@Model.PrevOMBNearAided</textarea>
+                    </div>
+                    <div class="col-3">
+                        <label for="PrevOMBDistAided">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevOMBDistAided" name="PrevOMBDistAided" readonly
+                            style="background-color: #e9ecef;">@Model.PrevOMBDistAided</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-6" <label asp-for="OMBNotes" class="form-label">OMB Notes</label>
+                        <input asp-for="OMBNotes" class="form-control" />
+                        <span asp-validation-for="OMBNotes" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label for="PrevOMBNotes">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevOMBNotes" name="PrevOMBNotes" readonly
+                            style="background-color: #e9ecef;">@Model.PrevOMBNotes</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label asp-for="AdditionalTests" class="form-label">Additional Tests</label>
+                        <textarea rows="5" asp-for="AdditionalTests" class="form-control"></textarea>
+                        <span asp-validation-for="AdditionalTests" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label for="PrevAdditionalTests">Previous</label>
+                        <textarea rows="5" class="form-control" id="PrevAdditionalTests" name="PrevAdditionalTests"
+                            readonly style="background-color: #e9ecef;">@Model.PrevAdditionalTests</textarea>
+                    </div>
+                </div>
+            </div>
+
+
+            @*-------------------------------------------- Refraction -----------------------------------------------*@
+
+            <div role="tabpanel" class="tab-pane" id="tab3">
+                <h3 class="mt-3"><u>Refraction</u></h3>
+
+                <div class="row mt-5">
+                    <div class="col-2">
+                        <label asp-for="AutoSignR" class="form-label">Autorefract RE</label>
+                        <select asp-for="AutoSignR" class="form-control">
+                            <option></option>
+                            <option>+</option>
+                            <option>-</option>
+                        </select>
+                        <span asp-validation-for="AutoSignR" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="AutoSphereRE" class="form-label">Sphere</label>
+                        <input asp-for="AutoSphereRE" class="form-control" />
+                        <span asp-validation-for="AutoSphereRE" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="AutorefractCylRE" class="form-label">Cyl</label>
+                        <input asp-for="AutorefractCylRE" class="form-control" />
+                        <span asp-validation-for="AutorefractCylRE" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="AutorefractAxisRE" class="form-label">Axis</label>
+                        <input asp-for="AutorefractAxisRE" class="form-control" />
+                        <span asp-validation-for="AutorefractAxisRE" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="AutorefractAddRE" class="form-label">Add</label>
+                        <input asp-for="AutorefractAddRE" class="form-control" />
+                        <span asp-validation-for="AutorefractAddRE" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <label for="PrevAutoSignR">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevAutoSignR" name="PrevAutoSignR" readonly
+                            style="background-color: #e9ecef;">@Model.PrevAutoSignR</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevAutoSphereRE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevAutoSphereRE" name="PrevAutoSphereRE" readonly
+                            style="background-color: #e9ecef;">@(Model.PrevAutoSphereRE.HasValue ? Model.PrevAutoSphereRE.Value.ToString("F2") : "N/A")</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevAutorefractCylRE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevAutorefractCylRE" name="PrevAutorefractCylRE"
+                            readonly style="background-color: #e9ecef;">@(Model.PrevAutorefractCylRE.HasValue ? Model.PrevAutorefractCylRE.Value.ToString("F2") : "N/A")</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevAutorefractAxisRE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevAutorefractAxisRE" name="PrevAutorefractAxisRE"
+                            readonly style="background-color: #e9ecef;">@Model.PrevAutorefractAxisRE</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevAutorefractAddRE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevAutorefractAddRE" name="PrevAutorefractAddRE"
+                            readonly style="background-color: #e9ecef;">@(Model.PrevAutorefractAddRE.HasValue ? Model.PrevAutorefractAddRE.Value.ToString("F2") : "N/A")</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-2">
+                        <label asp-for="AutoSignL" class="form-label">Autorefract LE</label>
+                        <select asp-for="AutoSignL" class="form-control">
+                            <option></option>
+                            <option>+</option>
+                            <option>-</option>
+                        </select>
+                        <span asp-validation-for="AutoSignL" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="AutoSphereLE" class="form-label">Sphere</label>
+                        <input asp-for="AutoSphereLE" class="form-control" />
+                        <span asp-validation-for="AutoSphereLE" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="AutorefractCylLE" class="form-label">Cyl</label>
+                        <input asp-for="AutorefractCylLE" class="form-control" />
+                        <span asp-validation-for="AutorefractCylLE" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="AutorefractAxisLE" class="form-label">Axis</label>
+                        <input asp-for="AutorefractAxisLE" class="form-control" />
+                        <span asp-validation-for="AutorefractAxisLE" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="AutorefractAddLE" class="form-label">Add</label>
+                        <input asp-for="AutorefractAddLE" class="form-control" />
+                        <span asp-validation-for="AutorefractAddLE" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <label for="PrevAutoSignL">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevAutoSignL" name="PrevAutoSignL" readonly
+                            style="background-color: #e9ecef;">@Model.PrevAutoSignL</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevAutoSphereLE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevAutoSphereLE" name="PrevAutoSphereLE" readonly
+                            style="background-color: #e9ecef;">@(Model.PrevAutoSphereLE.HasValue ? Model.PrevAutoSphereLE.Value.ToString("F2") : "N/A")</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="AutorefractCylLE">Previous</label>
+                        <textarea rows="1" class="form-control" id="AutorefractCylLE" name="AutorefractCylLE" readonly
+                            style="background-color: #e9ecef;">@(Model.PrevAutorefractCylLE.HasValue ? Model.PrevAutorefractCylLE.Value.ToString("F2") : "N/A")</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevAutorefractAxisLE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevAutorefractAxisLE" name="PrevAutorefractAxisLE"
+                            readonly style="background-color: #e9ecef;">@Model.PrevAutorefractAxisLE</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevAutorefractAddLE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevAutorefractAddLE" name="PrevAutorefractAddLE"
+                            readonly style="background-color: #e9ecef;">@(Model.PrevAutorefractAddLE.HasValue ? Model.PrevAutorefractAddLE.Value.ToString("F2") : "N/A")</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-2">
+                        <label asp-for="DropsUsed" class="form-label">Drops Used?</label>
+                        <input asp-for="DropsUsed" class="form-control" />
+                        <span asp-validation-for="DropsUsed" class="text-danger"></span>
+                    </div>
+                    <div class="col-2 offset-4">
+                        <label for="PrevDropsUsed">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevDropsUsed" name="PrevDropsUsed" readonly
+                            style="background-color: #e9ecef;">@Model.PrevDropsUsed</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-2">
+                        <label asp-for="RetSignR" class="form-label">Ret RE</label>
+                        <select asp-for="RetSignR" class="form-control">
+                            <option></option>
+                            <option>+</option>
+                            <option>-</option>
+                        </select>
+                        <span asp-validation-for="RetSignR" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="RetSphereRE" class="form-label">Sphere</label>
+                        <input asp-for="RetSphereRE" class="form-control" />
+                        <span asp-validation-for="RetSphereRE" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="RetCylRE" class="form-label">Cyl</label>
+                        <input asp-for="RetCylRE" class="form-control" />
+                        <span asp-validation-for="RetCylRE" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="RetAxisRE" class="form-label">Axis</label>
+                        <input asp-for="RetAxisRE" class="form-control" />
+                        <span asp-validation-for="RetAxisRE" class="text-danger"></span>
+                    </div>
+                    <div class="col-2 offset-1">
+                        <label for="PrevRetSignR">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevRetSignR" name="PrevRetSignR" readonly
+                            style="background-color: #e9ecef;">@Model.PrevRetSignR</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevRetSphereRE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevRetSphereRE" name="PrevRetSphereRE" readonly
+                            style="background-color: #e9ecef;">@(Model.PrevRetSphereRE.HasValue ? Model.PrevRetSphereRE.Value.ToString("F2") : "N/A")</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevRetCylRE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevRetCylRE" name="PrevRetCylRE" readonly
+                            style="background-color: #e9ecef;">@(Model.PrevRetCylRE.HasValue ? Model.PrevRetCylRE.Value.ToString("F2") : "N/A")</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevRetAxisRE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevRetAxisRE" name="PrevRetAxisRE" readonly
+                            style="background-color: #e9ecef;">@Model.PrevRetAxisRE</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-2">
+                        <label asp-for="RetSignL" class="form-label">Ret LE</label>
+                        <select asp-for="RetSignL" class="form-control">
+                            <option></option>
+                            <option>+</option>
+                            <option>-</option>
+                        </select>
+                        <span asp-validation-for="RetSignL" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="RetSphereLE" class="form-label">Sphere</label>
+                        <input asp-for="RetSphereLE" class="form-control" />
+                        <span asp-validation-for="RetSphereLE" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="RetCylLE" class="form-label">Cyl</label>
+                        <input asp-for="RetCylLE" class="form-control" />
+                        <span asp-validation-for="RetCylLE" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="RetAxisLE" class="form-label">Axis</label>
+                        <input asp-for="RetAxisLE" class="form-control" />
+                        <span asp-validation-for="RetAxisLE" class="text-danger"></span>
+                    </div>
+                    <div class="col-2 offset-1">
+                        <label for="PrevRetSignL">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevRetSignL" name="PrevRetSignL" readonly
+                            style="background-color: #e9ecef;">@Model.PrevRetSignL</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevRetSphereLE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevRetSphereLE" name="PrevRetSphereLE" readonly
+                            style="background-color: #e9ecef;">@(Model.PrevRetSphereLE.HasValue ? Model.PrevRetSphereLE.Value.ToString("F2") : "N/A")</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevRetCylLE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevRetCylLE" name="PrevRetCylLE" readonly
+                            style="background-color: #e9ecef;">@(Model.PrevRetCylLE.HasValue ? Model.PrevRetCylLE.Value.ToString("F2") : "N/A")</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevRetAxisLE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevRetAxisLE" name="PrevRetAxisLE" readonly
+                            style="background-color: #e9ecef;">@Model.PrevRetAxisLE</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-2">
+                        <label asp-for="SubjectSignR" class="form-label">Subjective RE</label>
+                        <select asp-for="SubjectSignR" class="form-control">
+                            <option></option>
+                            <option>+</option>
+                            <option>-</option>
+                        </select>
+                        <span asp-validation-for="SubjectSignR" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="SubjectSphereRE" class="form-label">Sphere</label>
+                        <input asp-for="SubjectSphereRE" class="form-control" />
+                        <span asp-validation-for="SubjectSphereRE" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="SubjectCylRE" class="form-label">Cyl</label>
+                        <input asp-for="SubjectCylRE" class="form-control" />
+                        <span asp-validation-for="SubjectCylRE" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="SubjectAxisRE" class="form-label">Axis</label>
+                        <input asp-for="SubjectAxisRE" class="form-control" />
+                        <span asp-validation-for="SubjectAxisRE" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="SubjectAddRE" class="form-label">Add</label>
+                        <input asp-for="SubjectAddRE" class="form-control" />
+                        <span asp-validation-for="SubjectAddRE" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <label for="PrevSubjectSignR">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevSubjectSignR" name="PrevSubjectSignR" readonly
+                            style="background-color: #e9ecef;">@Model.PrevSubjectSignR</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevSubjectSphereRE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevSubjectSphereRE" name="PrevSubjectSphereRE"
+                            readonly style="background-color: #e9ecef;">@(Model.PrevSubjectSphereRE.HasValue ? Model.PrevSubjectSphereRE.Value.ToString("F2") : "N/A")</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevSubjectCylRE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevSubjectCylRE" name="PrevSubjectCylRE" readonly
+                            style="background-color: #e9ecef;">@(Model.PrevSubjectCylRE.HasValue ? Model.PrevSubjectCylRE.Value.ToString("F2") : "N/A")</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevSubjectAxisRE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevSubjectAxisRE" name="PrevSubjectAxisRE" readonly
+                            style="background-color: #e9ecef;">@Model.PrevSubjectAxisRE</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevSubjectAddRE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevSubjectAddRE" name="PrevSubjectAddRE" readonly
+                            style="background-color: #e9ecef;">@(Model.PrevSubjectAddRE.HasValue ? Model.PrevSubjectAddRE.Value.ToString("F2") : "N/A")</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-2">
+                        <label asp-for="SubjectSignL" class="form-label">Subjective LE</label>
+                        <select asp-for="SubjectSignL" class="form-control">
+                            <option></option>
+                            <option>+</option>
+                            <option>-</option>
+                        </select>
+                        <span asp-validation-for="SubjectSignL" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="SubjectSphereLE" class="form-label">Sphere</label>
+                        <input asp-for="SubjectSphereLE" class="form-control" />
+                        <span asp-validation-for="SubjectSphereLE" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="SubjectCylLE" class="form-label">Cyl</label>
+                        <input asp-for="SubjectCylLE" class="form-control" />
+                        <span asp-validation-for="SubjectCylLE" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="SubjectAxisLE" class="form-label">Axis</label>
+                        <input asp-for="SubjectAxisLE" class="form-control" />
+                        <span asp-validation-for="SubjectAxisLE" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="SubjectAddLE" class="form-label">Add</label>
+                        <input asp-for="SubjectAddLE" class="form-control" />
+                        <span asp-validation-for="SubjectAddLE" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <label for="PrevSubjectSignL">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevSubjectSignL" name="PrevSubjectSignL" readonly
+                            style="background-color: #e9ecef;">@Model.PrevSubjectSignL</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevSubjectSphereLE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevSubjectSphereLE" name="PrevSubjectSphereLE" readonly
+                            style="background-color: #e9ecef;">@(Model.PrevSubjectSphereLE.HasValue ? Model.PrevSubjectSphereLE.Value.ToString("F2") : "N/A")</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevSubjectCylLE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevSubjectCylLE" name="PrevSubjectCylLE" readonly
+                            style="background-color: #e9ecef;">@(Model.PrevSubjectCylLE.HasValue ? Model.PrevSubjectCylLE.Value.ToString("F2") : "N/A")</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevSubjectAxisLE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevSubjectAxisLE" name="PrevSubjectAxisLE" readonly
+                            style="background-color: #e9ecef;">@Model.PrevSubjectAxisLE</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevSubjectAddLE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevSubjectAddLE" name="PrevSubjectAddLE" readonly
+                            style="background-color: #e9ecef;">@(Model.PrevSubjectAddLE.HasValue ? Model.PrevSubjectAddLE.Value.ToString("F2") : "N/A")</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-6">
+                        <label asp-for="RefractionNotes" class="form-label">Refraction Notes</label>
+                        <input asp-for="RefractionNotes" class="form-control" />
+                        <span asp-validation-for="RefractionNotes" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label for="PrevRefractionNotes">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevRefractionNotes" name="PrevRefractionNotes"
+                            readonly style="background-color: #e9ecef;">@Model.PrevRefractionNotes</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-2">
+                        <label asp-for="FinalVARE" class="form-label">Final VA RE</label>
+                        <input asp-for="FinalVARE" class="form-control" />
+                        <span asp-validation-for="FinalVARE" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="FinalVALE" class="form-label">Final VA LE</label>
+                        <input asp-for="FinalVALE" class="form-control" />
+                        <span asp-validation-for="FinalVALE" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="FinalVABinoc" class="form-label">Final VA Binoc</label>
+                        <input asp-for="FinalVABinoc" class="form-control" />
+                        <span asp-validation-for="FinalVABinoc" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <label for="PrevFinalVARE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevFinalVARE" name="PrevFinalVARE" readonly
+                            style="background-color: #e9ecef;">@Model.PrevFinalVARE</textarea>
+                    </div>
+                    <div class="col-2">
+                        <label for="PrevFinalVALE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevFinalVALE" name="PrevFinalVALE" readonly
+                            style="background-color: #e9ecef;">@Model.PrevFinalVALE</textarea>
+                    </div>
+                    <div class="col-2">
+                        <label for="PrevFinalVABinoc">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevFinalVABinoc" name="PrevFinalVABinoc" readonly
+                            style="background-color: #e9ecef;">@Model.PrevFinalVABinoc</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-3">
+                        <label asp-for="FinalOMBDist" class="form-label">Final OMB Dist</label>
+                        <input asp-for="FinalOMBDist" class="form-control" />
+                        <span asp-validation-for="FinalOMBDist" class="text-danger"></span>
+                    </div>
+                    <div class="col-3">
+                        <label asp-for="FinalOMBNear" class="form-label">Final OMB Near</label>
+                        <input asp-for="FinalOMBNear" class="form-control" />
+                        <span asp-validation-for="FinalOMBNear" class="text-danger"></span>
+                    </div>
+                    <div class="col-3">
+                        <label for=" PrevFinalOMBDist">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevFinalOMBDist" name="PrevFinalOMBDist" readonly
+                            style="background-color: #e9ecef;">@Model.PrevFinalOMBDist</textarea>
+                    </div>
+                    <div class="col-3">
+                        <label for=" PrevFinalOMBNear">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevFinalOMBNear" name="PrevFinalOMBNear" readonly
+                            style="background-color: #e9ecef;">@Model.PrevFinalOMBNear</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-6">
+                        <label asp-for="FinalOMBNotes" class="form-label">Final OMB Notes</label>
+                        <input asp-for="FinalOMBNotes" class="form-control" />
+                        <span asp-validation-for="FinalOMBNotes" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label for="PrevFinalOMBNotes">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevFinalOMBNotes" name="PrevFinalOMBNotes" readonly
+                            style="background-color: #e9ecef;">@Model.PrevFinalOMBNotes</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-2">
+                        <label asp-for="FinalSphereSignRE" class="form-label">Final Rx RE</label>
+                        <select asp-for="FinalSphereSignRE" class="form-control">
+                            <option></option>
+                            <option>+</option>
+                            <option>-</option>
+                        </select>
+                        <span asp-validation-for="FinalSphereSignRE" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="FinalSphereRE" class="form-label">Sphere</label>
+                        <input asp-for="FinalSphereRE" class="form-control" />
+                        <span asp-validation-for="FinalSphereRE" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="FinalCylRE" class="form-label">Cyl</label>
+                        <input asp-for="FinalCylRE" class="form-control" />
+                        <span asp-validation-for="FinalCylRE" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="FinalAxisRE" class="form-label">Axis</label>
+                        <input asp-for="FinalAxisRE" class="form-control" />
+                        <span asp-validation-for="FinalAxisRE" class="text-danger"></span>
+                    </div>
+                    <div class="col-2 offset-1">
+                        <label for="PrevFinalSphereSignRE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevFinalSphereSignRE" name="PrevFinalSphereSignRE" readonly
+                            style="background-color: #e9ecef;">@Model.PrevFinalSphereSignRE</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevFinalSphereRE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevFinalSphereRE" name="PrevFinalSphereRE" readonly
+                            style="background-color: #e9ecef;">@(Model.PrevFinalSphereRE.HasValue ? Model.PrevFinalSphereRE.Value.ToString("F2") : "N/A")</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevFinalCylRE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevFinalCylRE" name="PrevFinalCylRE" readonly
+                            style="background-color: #e9ecef;">@(Model.PrevFinalCylRE.HasValue ? Model.PrevFinalCylRE.Value.ToString("F2") : "N/A")</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevFinalAxisRE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevFinalAxisRE" name="PrevFinalAxisRE" readonly
+                            style="background-color: #e9ecef;">@Model.PrevFinalAxisRE</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-2">
+                        <label asp-for="FinalSphereSignLE" class="form-label">Final Rx LE</label>
+                        <select asp-for="FinalSphereSignLE" class="form-control">
+                            <option></option>
+                            <option>+</option>
+                            <option>-</option>
+                        </select>
+                        <span asp-validation-for="FinalSphereSignLE" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="FinalSphereLE" class="form-label">Sphere</label>
+                        <input asp-for="FinalSphereLE" class="form-control" />
+                        <span asp-validation-for="FinalSphereLE" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="FinalCylLE" class="form-label">Cyl</label>
+                        <input asp-for="FinalCylLE" class="form-control" />
+                        <span asp-validation-for="FinalCylLE" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <label asp-for="FinalAxisLE" class="form-label">Axis</label>
+                        <input asp-for="FinalAxisLE" class="form-control" />
+                        <span asp-validation-for="FinalAxisLE" class="text-danger"></span>
+                    </div>
+                    <div class="col-2 offset-1">
+                        <label for="PrevFinalSphereSignLE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevFinalSphereSignLE" name="PrevFinalSphereSignLE" readonly
+                            style="background-color: #e9ecef;">@Model.PrevFinalSphereSignLE</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevFinalSphereLE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevFinalSphereLE" name="PrevFinalSphereLE" readonly
+                            style="background-color: #e9ecef;">@(Model.PrevFinalSphereLE.HasValue ? Model.PrevFinalSphereLE.Value.ToString("F2") : "N/A")</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevFinalCylLE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevFinalCylLE" name="PrevFinalCylLE" readonly
+                            style="background-color: #e9ecef;">@(Model.PrevFinalCylLE.HasValue ? Model.PrevFinalCylLE.Value.ToString("F2") : "N/A")</textarea>
+                    </div>
+                    <div class="col-1">
+                        <label for="PrevFinalAxisLE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevFinalAxisLE" name="PrevFinalAxisLE" readonly
+                            style="background-color: #e9ecef;">@Model.PrevFinalAxisLE</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-6">
+                        <label asp-for="AdditionalRefractionTests" class="form-label">Additional Tests</label>
+                        <textarea rows="5" asp-for="AdditionalRefractionTests" class="form-control"></textarea>
+                        <span asp-validation-for="AdditionalRefractionTests" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label for="PrevAdditionalRefractionTests">Previous</label>
+                        <textarea rows="5" class="form-control" id="PrevAdditionalRefractionTests"
+                            name="PrevAdditionalRefractionTests" readonly
+                            style="background-color: #e9ecef;">@Model.PrevAdditionalRefractionTests</textarea>
+                    </div>
+                </div>
+
+            </div>
+
+
+            @*------------------------------------ Health Assess ------------------------------------------------*@
+
+            <div role="tabpanel" class="tab-pane" id="tab4">
+                <h3 class="mt-3"><u>Health Assessment</u></h3>
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label asp-for="Dilated" class="form-label">Dilated?</label>
+                        <select asp-for="Dilated" class="form-control">
+                            <option value="" disabled selected>Select..</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                        <span asp-validation-for="Dilated" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label for="PrevDilated">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevDilated" name="PrevDilated" readonly
+                            style="background-color: #e9ecef;">@Model.PrevDilated</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label asp-for="DrugUsed" class="form-label">Drug Used</label>
+                        <input asp-for="DrugUsed" class="form-control" />
+                        <span asp-validation-for="DrugUsed" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label for="PrevDrugUsed">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevDrugUsed" name="PrevDrugUsed" readonly
+                            style="background-color: #e9ecef;">@Model.PrevDrugUsed</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label asp-for="TimeDrugUsed" class="form-label">Time Drug Used</label>
+                        <input asp-for="TimeDrugUsed" class="form-control" />
+                        <span asp-validation-for="TimeDrugUsed" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label for="PrevTimeDrugUsed">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevTimeDrugUsed" name="PrevTimeDrugUsed" readonly
+                            style="background-color: #e9ecef;">@(Model.PrevTimeDrugUsed.HasValue ? Model.PrevTimeDrugUsed.Value.ToString("F2") : "N/A")</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label asp-for="PupilExam" class="form-label">Pupil Exam</label>
+                        <textarea rows="3" asp-for="PupilExam" class="form-control"></textarea>
+                        <span asp-validation-for="PupilExam" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label for="PrevPupilExam">Previous</label>
+                        <textarea rows="3" class="form-control" id="PrevPupilExam" name="PrevPupilExam" readonly
+                            style="background-color: #e9ecef;">@Model.PrevPupilExam</textarea>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label asp-for="IOPRE" class="form-label">IOP RE</label>
+                        <input asp-for="IOPRE" class="form-control" />
+                        <span asp-validation-for="IOPRE" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label for="PrevIOPRE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevIOPRE" name="PrevIOPRE" readonly
+                            style="background-color: #e9ecef;">@Model.PrevIOPRE</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label asp-for="IOPLE" class="form-label">IOP LE</label>
+                        <input asp-for="IOPLE" class="form-control" />
+                        <span asp-validation-for="IOPLE" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label for="PrevIOPLE">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevIOPLE" name="PrevIOPLE" readonly
+                            style="background-color: #e9ecef;">@Model.PrevIOPLE</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label asp-for="IOPInstrument" class="form-label">IOP Instrument</label>
+                        <input asp-for="IOPInstrument" class="form-control" />
+                        <span asp-validation-for="IOPInstrument" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label for="PrevIOPInstrument">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevIOPInstrument" name="PrevIOPInstrument" readonly
+                            style="background-color: #e9ecef;">@Model.PrevIOPInstrument</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label asp-for="IOPTime" class="form-label">IOP Time</label>
+                        <input asp-for="IOPTime" class="form-control" />
+                        <span asp-validation-for="IOPTime" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label for="PrevIOPTime">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevIOPTime" name="PrevIOPTime" readonly
+                            style="background-color: #e9ecef;">@(Model.PrevIOPTime.HasValue ? Model.PrevIOPTime.Value.ToString("F2") : "N/A")</textarea>
+                    </div>
+                </div>
+
+
+                @*-----------External-------------*@
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label asp-for="Adnexa" class="form-label"></label>
+                        <textarea rows="4" asp-for="Adnexa" class="form-control"></textarea>
+                        <span asp-validation-for="Adnexa" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label for="PrevAdnexa">Previous</label>
+                        <textarea rows="4" class="form-control" id="PrevAdnexa" name="PrevAdnexa" readonly
+                            style="background-color: #e9ecef;">@Model.PrevAdnexa</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label asp-for="LidsLashes" class="form-label">Lids and Lashes</label>
+                        <textarea rows="4" asp-for="LidsLashes" class="form-control"></textarea>
+                        <span asp-validation-for="LidsLashes" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label for="PrevLidsLashes">Previous</label>
+                        <textarea rows="4" class="form-control" id="PrevLidsLashes" name="PrevLidsLashes" readonly
+                            style="background-color: #e9ecef;">@Model.PrevLidsLashes</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label asp-for="Conjunctiva" class="form-label"></label>
+                        <textarea rows="4" asp-for="Conjunctiva" class="form-control"></textarea>
+                        <span asp-validation-for="Conjunctiva" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label for="PrevConjunctiva">Previous</label>
+                        <textarea rows="4" class="form-control" id="PrevConjunctiva" name="PrevConjunctiva" readonly
+                            style="background-color: #e9ecef;">@Model.PrevConjunctiva</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label asp-for="Cornea" class="form-label"></label>
+                        <textarea rows="4" asp-for="Cornea" class="form-control"></textarea>
+                        <span asp-validation-for="Cornea" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label for="PrevCornea">Previous</label>
+                        <textarea rows="4" class="form-control" id="PrevCornea" name="PrevCornea" readonly
+                            style="background-color: #e9ecef;">@Model.PrevCornea</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label asp-for="Lens" class="form-label"></label>
+                        <textarea rows="4" asp-for="Lens" class="form-control"></textarea>
+                        <span asp-validation-for="Lens" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label for="PrevLens">Previous</label>
+                        <textarea rows="4" class="form-control" id="PrevLens" name="PrevLens" readonly
+                            style="background-color: #e9ecef;">@Model.PrevLens</textarea>
+                    </div>
+                </div>
+
+
+                @*------Internal--------*@
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label asp-for="ACExam" class="form-label">Anterior Chamber</label>
+                        <textarea rows="4" asp-for="ACExam" class="form-control"></textarea>
+                        <span asp-asp-validation-for="ACExam" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label for="PrevACExam">Previous</label>
+                        <textarea rows="4" class="form-control" id="PrevACExam" name="PrevACExam" readonly
+                            style="background-color: #e9ecef;">@Model.PrevACExam</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label asp-for="Vitreous" class="form-label"></label>
+                        <textarea rows="4" asp-for="Vitreous" class="form-control"></textarea>
+                        <span asp-validation-for="Vitreous" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label for="PrevVitreous">Previous</label>
+                        <textarea rows="4" class="form-control" id="PrevVitreous" name="PrevVitreous" readonly
+                            style="background-color: #e9ecef;">@Model.PrevVitreous</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label asp-for="OpticNerve" class="form-label">Optic Nerve</label>
+                        <textarea rows="4" asp-for="OpticNerve" class="form-control"></textarea>
+                        <span asp-validation-for="OpticNerve" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label for="PrevOpticNerve">Previous</label>
+                        <textarea rows="4" class="form-control" id="PrevOpticNerve" name="PrevOpticNerve" readonly
+                            style="background-color: #e9ecef;">@Model.PrevOpticNerve</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label asp-for="Macula" class="form-label"></label>
+                        <textarea rows="4" asp-for="Macula" class="form-control"></textarea>
+                        <span asp-validation-for="Macula" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label for="PrevMacula">Previous</label>
+                        <textarea rows="4" class="form-control" id="PrevMacula" name="PrevMacula" readonly
+                            style="background-color: #e9ecef;">@Model.PrevMacula</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label asp-for="Vessels" class="form-label"></label>
+                        <textarea rows="4" asp-for="Vessels" class="form-control"></textarea>
+                        <span asp-validation-for="Vessels" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label for="PrevVessels">Previous</label>
+                        <textarea rows="4" class="form-control" id="PrevVessels" name="PrevVessels" readonly
+                            style="background-color: #e9ecef;">@Model.PrevVessels</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label asp-for="Periphery" class="form-label"></label>
+                        <textarea rows="4" asp-for="Periphery" class="form-control"></textarea>
+                        <span asp-validation-for="Periphery" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label for="PrevPeriphery">Previous</label>
+                        <textarea rows="4" class="form-control" id="PrevPeriphery" name="PrevPeriphery" readonly
+                            style="background-color: #e9ecef;">@Model.PrevPeriphery</textarea>
+                    </div>
+                </div>
+
+            </div>
+
+
+            @*------------------------------------------- Final --------------------------------------*@
+
+            <div role="tabpanel" class="tab-pane" id="tab5">
+                <h3 class="mt-3"><u>Final</u></h3>
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label asp-for="AdditionalTestsFinal" class="form-label">Additional Tests</label>
+                        <textarea rows="5" asp-for="AdditionalTestsFinal" class="form-control"></textarea>
+                        <span asp-validation-for="AdditionalTestsFinal" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label for="PrevAdditionalTestsFinal">Previous</label>
+                        <textarea rows="5" class="form-control" id="PrevAdditionalTestsFinal"
+                            name="PrevAdditionalTestsFinal" readonly
+                            style="background-color: #e9ecef;">@Model.PrevAdditionalTestsFinal</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label asp-for="Advice" class="form-label"></label>
+                        <textarea rows="5" asp-for="Advice" class="form-control"></textarea>
+                        <span asp-validation-for="Advice" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label for="PrevAdvice">Previous</label>
+                        <textarea rows="5" class="form-control" id="PrevAdvice" name="PrevAdvice" readonly
+                            style="background-color: #e9ecef;">@Model.PrevAdvice</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label asp-for="Recommendations" class="form-label"></label>
+                        <textarea rows="5" asp-for="Recommendations" class="form-control"></textarea>
+                        <span asp-validation-for="Recommendations" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label for="PrevRecommendations">Previous</label>
+                        <textarea rows="5" class="form-control" id="PrevRecommendations" name="PrevRecommendations"
+                            readonly style="background-color: #e9ecef;">@Model.PrevRecommendations</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label asp-for="Referrals" class="form-label"></label>
+                        <textarea rows="4" asp-for="Referrals" class="form-control"></textarea>
+                        <span asp-validation-for="Referrals" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label for="PrevReferrals">Previous</label>
+                        <textarea rows="4" class="form-control" id="PrevReferrals" name="PrevReferrals" readonly
+                            style="background-color: #e9ecef;">@Model.PrevReferrals</textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label asp-for="Recall" class="form-label"></label>
+                        <input asp-for="Recall" class="form-control" required />
+                        <span asp-validation-for="Recall" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label for="PrevRecall">Previous</label>
+                        <textarea rows="1" class="form-control" id="PrevRecall" name="PrevRecall" readonly
+                            style="background-color: #e9ecef;">@Model.PrevRecall</textarea>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="mt-3">
+            <button type="submit" class="btn btn-lg btn-success mr-4" aria-label="create">Finish Record</button>
+            <a class="btn btn-lg btn-danger" asp-action="Details" asp-route-id="@Model.PatientId"
+                aria-label="cancel">Cancel</a>
+        </div>
+
+    </form>
+</div>

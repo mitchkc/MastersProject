@@ -1,0 +1,100 @@
+@model Triage
+
+<div class="card rounded shadow p-4 mb-5">
+
+    <div class="border-bottom d-flex align-items-center justify-content-between mb-3">
+        <h3 class="text-dark mb-3">Triage Details</h3>
+
+    </div>
+
+    <div class="row">
+
+        <dl class="row">
+
+            <dt class="col-3 pb-1">Created On</dt>
+            <dd class="col-9 pb-1">@Model.CreatedOn.ToString("dd/MM/yyyy")</dd>
+
+            <dt class="col-3 pb-1">Where was the patient?</dt>
+            <dd class="col-9 pb-1">@Model.PxLocation</dd>
+
+            <dt class="col-3 pb-1">When was their last sight test?</dt>
+            <dd class="col-9 pb-1">@Model.LastST</dd>
+
+            <dt class="col-3 pb-1">Where was their last sight test?</dt>
+            <dd class="col-9 pb-1">@Model.LastSTLocation</dd>
+
+            <dt class="col-3 pb-1">Patient's description</dt>
+            <dd class="col-9 pb-1">@Model.PxDescript</dd>
+
+            <dt class="col-3 pb-1">When did the issue start?</dt>
+            <dd class="col-9 pb-1">@Model.IssueStart</dd>
+
+            <dt class="col-3 pb-1">Had it happened before?</dt>
+            <dd class="col-9 pb-1">@Model.HapBefore</dd>
+
+            <dt class="col-3 pb-1">Pain?</dt> 
+            <dd class="col-9 pb-1">@Model.Pain</dd>
+
+            <dt class="col-3 pb-1">Pain rating (1-9)</dt>
+            <dd class="col-9 pb-1">@Model.PainRating</dd>
+
+            <dt class="col-3 pb-1">Redness?</dt> 
+            <dd class="col-9 pb-1">@Model.Redness</dd>
+
+            <dt class="col-3 pb-1">Discharge?</dt> 
+            <dd class="col-9 pb-1">@Model.Discharge</dd>
+
+            <dt class="col-3 pb-1">Photosensitivity?</dt> 
+            <dd class="col-9 pb-1">@Model.Photosensitivity</dd>
+
+            <dt class="col-3 pb-1">Is thier vision affected?</dt> 
+            <dd class="col-9 pb-1">@Model.VisionAffected</dd>
+
+            <dt class="col-3 pb-1">CL wear?</dt> 
+            <dd class="col-9 pb-1">@Model.CLWearer</dd>
+
+            <dt class="col-3 pb-1">CL info</dt>
+            <dd class="col-9 pb-1">@Model.CLInfo</dd>
+
+            <dt class="col-3 pb-1">Flashes?</dt> 
+            <dd class="col-9 pb-1">@Model.Flashes</dd>
+
+            <dt class="col-3 pb-1">Are the flashes new?</dt>
+            <dd class="col-9 pb-1">@Model.CLInfo</dd>
+
+            <dt class="col-3 pb-1">Flashes getting worse (more frequent/numerous)?</dt>
+            <dd class="col-9 pb-1">@Model.FlashWorsening</dd>
+
+            <dt class="col-3 pb-1">Floaters</dt> 
+            <dd class="col-9 pb-1">@Model.Floaters</dd>
+
+            <dt class="col-3 pb-1">Are the floaters new?</dt>
+            <dd class="col-9 pb-1">@Model.FloatersNew</dd>
+
+            <dt class="col-3 pb-1">Are the floaters getting worse (more numerous)?</dt>
+            <dd class="col-9 pb-1">@Model.FloatersWorsening</dd>
+
+            <dt class="col-3 pb-1">Optometrist spoken to?</dt>
+            <dd class="col-9 pb-1">@Model.Optom</dd>
+
+            <dt class="col-3 pb-1">Advice given to the patient?</dt>
+            <dd class="col-9 pb-1">@Model.Advice</dd>
+
+        </dl>
+
+        <div class="mt-4">
+            <button asp-condition=@(User.HasOneOfRoles("admin, optometrist")) class="btn btn-danger btn-lg" data-bs-toggle="modal"
+                data-bs-target="#triageDeleteModal">
+                <i class="bi bi-trash-fill"></i>
+                <span>Delete</span>
+            </button>
+
+            <a class="btn btn-warning btn-lg ms-3" asp-action="Details" asp-route-id="@Model.PatientId" aria-label="cancel">
+                <i class="bi bi-arrow-left-square"></i>Back</a>
+        </div>
+
+    </div>
+
+</div>
+
+<partial name="_TriageDeleteModal"/>

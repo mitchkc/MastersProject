@@ -1,0 +1,33 @@
+@model RSearchViewModel
+
+<h2>Patients with Glasses Prescription</h2>
+
+<partial name="_RSearch" />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Age</th>
+            <th>Prescription</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Patients != null && Model.Patients.Any())
+        {
+            @foreach (var patient in Model.Patients)
+            {
+                <tr>
+                    <td>@patient.Age</td>
+                    <td>RE:@patient.PrescriptionRE LE:@patient.PrescriptionLE</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td><p>no patients</p></td>
+            </tr>
+        }
+
+    </tbody>
+</table>

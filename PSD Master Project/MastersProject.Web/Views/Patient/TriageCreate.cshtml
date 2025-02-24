@@ -1,0 +1,216 @@
+@model Triage
+
+<div class="card rounded shadow p-4 mt-5 mb-5">
+
+    <div class="position-absolute top-0 start-50 translate-middle rounded-circle bg-dark p-2">
+        <svg class="text-white" width="28" height="28" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+            fill="currentColor" class="bi bi-file-earmark-plus-fill" viewBox="0 0 16 16">
+            <path
+                d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0M9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1M8.5 7v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 1 0" />
+        </svg>
+    </div>
+
+    <h1 class="my-3 mx-auto">Add New Triage</h1>
+
+
+    <form asp-action="TriageCreate">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <input type="hidden" asp-for="PatientId" />
+
+        <div class="row mt-4">
+            <div class="col">
+                <label asp-for="PxLocation" class="form-label">Where is the patient?</label>
+                <input asp-for="PxLocation" class="form-control" />
+                <span asp-validation-for="PxLocation" class="text-danger"></span>
+            </div>
+
+            <div class="col">
+                <label asp-for="LastST" class="form-label">When was the patient's last sight test?</label>
+                <input asp-for="LastST" class="form-control" />
+                <span asp-validation-for="LastST" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <label asp-for="LastSTLocation" class="form-label">Where was their last sight test?</label>
+            <input asp-for="LastSTLocation" class="form-control" />
+            <span asp-validation-for="LastSTLocation" class="text-danger"></span>
+        </div>
+
+        <div class="mt-4">
+            <label asp-for="PxDescript" class="form-label">Patient's description of the issue</label>
+            <input asp-for="PxDescript" class="form-control" />
+            <span asp-validation-for="PxDescript" class="text-danger"></span>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col">
+                <label asp-for="IssueStart" class="form-label">When did the issue start?</label>
+                <input asp-for="IssueStart" class="form-control" />
+                <span asp-validation-for="IssueStart" class="text-danger"></span>
+            </div>
+
+            <div class="col">
+                <label asp-for="HapBefore" class="form-label">Has it happened before?</label>
+                <input asp-for="HapBefore" class="form-control">
+                <span asp-validation-for="HapBefore" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col">
+                <label asp-for="Pain" class="form-label"></label>
+                <select asp-for="Pain" class="form-control">
+                    <option value="" disabled selected>Select..</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+                <span asp-validation-for="Pain" class="text-danger"></span>
+            </div>
+
+            <div class="col">
+                <label asp-for="PainRating" class="form-label">Pain rating (1-10)</label>
+                <select asp-for="PainRating" class="form-control">
+                    <option value="0" selected>Select..</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+                <span asp-validation-for="PainRating" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col">
+                <label asp-for="Redness" class="form-label"></label>
+                <select asp-for="Redness" class="form-control">
+                    <option value="" disabled selected>Select..</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+                <span asp-validation-for="Redness" class="text-danger"></span>
+            </div>
+
+            <div class="col">
+                <label asp-for="Discharge" class="form-label"></label>
+                <select asp-for="Discharge" class="form-control">
+                    <option value="" disabled selected>Select..</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+                <span asp-validation-for="Discharge" class="text-danger"></span>
+            </div>
+
+            <div class="col">
+                <label asp-for="Photosensitivity" class="form-label"></label>
+                <select asp-for="Photosensitivity" class="form-control">
+                    <option value="" disabled selected>Select..</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+                <span asp-validation-for="Photosensitivity" class="text-danger"></span>
+            </div>
+
+            <div class="col">
+                <label asp-for="VisionAffected" class="form-label">Is their vision affected?</label>
+                <select asp-for="VisionAffected" class="form-control">
+                    <option value="" disabled selected>Select..</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+                <span asp-validation-for="VisionAffected" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <label asp-for="CLWearer" class="form-label">CL wearer?</label>
+            <select asp-for="CLWearer" class="form-control">
+                <option value="" disabled selected>Select..</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+            <span asp-validation-for="CLWearer" class="text-danger"></span>
+        </div>
+
+        <div class="mt-4">
+            <label asp-for="CLInfo" class="form-label">CL info (type/wear time etc)</label>
+            <input asp-for="CLInfo" class="form-control" />
+            <span asp-validation-for="CLInfo" class="text-danger"></span>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-2">
+                <label asp-for="Flashes" class="form-label">Flashes?</label>
+                <select asp-for="Flashes" class="form-control">
+                    <option value="" disabled selected>Select..</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+                <span asp-validation-for="Flashes" class="text-danger"></span>
+            </div>
+
+            <div class="col-5">
+                <label asp-for="FlashesNew" class="form-label">Are the flashes new?</label>
+                <input asp-for="FlashesNew" class="form-control" />
+                <span asp-validation-for="FlashesNew" class="text-danger"></span>
+            </div>
+
+            <div class="col-5">
+                <label asp-for="FlashWorsening" class="form-label">Are they getting worse (more frequent)?</label>
+                <input asp-for="FlashWorsening" class="form-control" />
+                <span asp-validation-for="FlashWorsening" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-2">
+                <label asp-for="Floaters" class="form-label">Floaters?</label>
+                <select asp-for="Floaters" class="form-control">
+                    <option value="" disabled selected>Select..</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+                <span asp-validation-for="Floaters" class="text-danger"></span>
+            </div>
+
+            <div class="col-5">
+                <label asp-for="FloatersNew" class="form-label">Are the floaters new?</label>
+                <input asp-for="FloatersNew" class="form-control" />
+                <span asp-validation-for="FloatersNew" class="text-danger"></span>
+            </div>
+
+            <div class="col-5">
+                <label asp-for="FloatersWorsening" class="form-label">Are they getting worse (more numerous)?</label>
+                <input asp-for="FloatersWorsening" class="form-control" />
+                <span asp-validation-for="FloatersWorsening" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <label asp-for="Optom" class="form-label">Optometrist spoken to?</label>
+            <input asp-for="Optom" class="form-control" />
+            <span asp-validation-for="Optom" class="text-danger"></span>
+        </div>
+
+        <div class="mt-4">
+            <label asp-for="Advice" class="form-label">Advice given to the patient?</label>
+            <input asp-for="Advice" class="form-control" />
+            <span asp-validation-for="Advice" class="text-danger"></span>
+        </div>
+
+        <div class="mt-5">
+            <button type="submit" class="btn btn-lg  btn-success mr-3" aria-label="create">Create</button>
+            <a class="btn btn-lg btn-danger" asp-action="Details" asp-route-id="@Model.PatientId"
+                aria-label="cancel">Cancel</a>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,40 @@
+<div class="card rounded shadow p-4">
+
+   <!-- list header -->
+   <div class="d-flex align-items-center justify-content-between mb-4">
+      <h3>Sight Tests</h3>
+   </div>
+
+   <table class="table mt-4">
+      <thead>
+         <tr>
+            <th>Date Created</th>
+            <th>Action</th>
+         </tr>
+      </thead>
+      <tbody>
+         @if (Model.SightTests.Count == 0 || Model.SightTests == null)
+         {
+            <tr>
+               <td>No Sight Tests Yet..</td>
+            </tr>
+         }
+         else
+         {
+
+            @foreach (var s in Model.SightTests)
+            {
+               <tr>
+                  <td>@s.CreatedOn.ToString("dd/MM/yyyy")</td>
+                  <td>
+                     <a asp-action="STDetails" asp-route-id="@s.STId" class="btn btn-primary">
+                        <i class="bi bi-eye" title="View sight test"></i>
+                        <span>Details</span>
+                     </a>
+                  </td>
+               </tr>
+            }
+         }
+      </tbody>
+   </table>
+</div>

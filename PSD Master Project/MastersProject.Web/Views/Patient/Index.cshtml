@@ -1,0 +1,42 @@
+
+
+<div class="card rounded shadow p-4 mb-5">   
+  
+   <!-- list header -->
+   <div class="d-flex align-items-center justify-content-between mb-4">
+      <h1 class="my-3 mx-auto">Patient List</h1>
+   </div>
+   
+   <partial name="_SearchPatients" />
+
+   <table class="table table-hover mt-4">
+      <thead>
+         <tr>
+            <th>Forename</th>
+            <th>Surname</th>
+            <th>Date of Birth</th>
+            <th>Address</th>          
+            <th>Actions</th>
+         </tr>
+      </thead>
+      <tbody>
+         @foreach(var p in Model.Patients) 
+         {
+            <tr>
+               <td>@p.Forename</td>
+               <td>@p.Surname</td>
+               <td>@p.Dob.ToString("dd/MM/yyyy")</td>
+               <td>@p.Address</td>  
+                          
+               <td>                 
+                  <a asp-action="Details" asp-route-id=@p.Pid class="btn btn-primary">                    
+                     <i class="bi bi-eye" title="patient details"></i> 
+                     <span>Details</span>                    
+                  </a>                   
+               </td>
+            </tr>
+         }
+      </tbody>
+   </table>
+
+</div>

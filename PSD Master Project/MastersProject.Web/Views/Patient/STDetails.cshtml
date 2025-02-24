@@ -1,0 +1,488 @@
+@model SightTest
+
+<div class="card rounded shadow p-4 mb-5">
+
+    <!-- Title bar -->
+    <div class="border-bottom d-flex align-items-center justify-content-between mb-3">
+        <h3 class="text-dark">Sight Test Details</h3>
+    </div>
+
+    <div class="row">
+
+        <ul class="nav nav-tabs m-3" role="tablist">
+
+            <li role="presentation" class="active"><a href="#tab1" role="tab" data-toggle="tab">
+                    <h5>History</h5>
+                </a></li>
+
+            <li class="ms-4" role="presentation"><a href="#tab2" role="tab" data-toggle="tab">
+                    <h5>Visions and VA</h5>
+                </a></li>
+
+            <li class="ms-4" role="presentation"><a href="#tab3" role="tab" data-toggle="tab">
+                    <h5>Refraction</h5>
+                </a></li>
+
+            <li class="ms-4" role="presentation"><a href="#tab4" role="tab" data-toggle="tab">
+                    <h5>Health Assessment</h5>
+                </a></li>
+
+            <li class="ms-4" role="presentation"><a href="#tab5" data-toggle="tab">
+                    <h5>Final</h5>
+                </a></li>
+
+        </ul>
+
+        <dl class="row">
+
+            <div class="tab-content">
+
+                <div role="tabpanel" class="tab-pane active" id="tab1">
+                    <h3 class="mb-4"><u>History</u></h3>
+
+                    <dt class="col-3 pb-1">Created On</dt>
+                    <dd class="col-9 pb-1">@Model.CreatedOn.ToString("dd/MM/yyyy")</dd>
+
+                    <dt class="col-3 pb-1">History</dt>
+                    <dd class="col-9 pb-1">@Model.History</dd>
+
+                    <dt class="col-3 pb-1">General Health</dt>
+                    <dd class="col-9 pb-1">@Model.GeneralHealth</dd>
+
+                    <dt class="col-3 pb-1">Ophthalmic History</dt>
+                    <dd class="col-9 pb-1">@Model.OphthalmicHistory</dd>
+
+                    <dt class="col-3 pb-1">Occupation</dt>
+                    <dd class="col-9 pb-1">@Model.Occupation</dd>
+
+                    <dt class="col-3 pb-1">Driver</dt>
+                    <dd class="col-9 pb-1">@Model.Driver</dd>
+
+                    <dt class="col-3 pb-1">Smoker</dt>
+                    <dd class="col-9 pb-1">@Model.Smoker</dd>
+
+                </div>
+
+                <div role="tabpanel" class="tab-pane" id="tab2">
+                    <h3 class="mb-4"><u>Visions and VA</u></h3>
+
+                    <div class="row ml-1">
+                        <div class="col-3">
+                            <dt>Current Rx RE</dt>
+                        </div>
+                        <div class="col-3">
+                            <dt>Current Rx LE</dt>
+                        </div>
+                    </div>
+
+                    <div class="row ml-1 mb-3">
+                        <div class="col-3">
+                            <dd>@Model.CurrentSignR@Model.CurrentSphereRE.ToString("F2") / -@Model.CurrentCylRE.ToString("F2") x @Model.CurrentAxisRE    add: @Model.CurrentAddRE.ToString("F2")</dd>
+                        </div>
+                        <div class="col-3">
+                            <dd>@Model.CurrentSignL@Model.CurrentSphereLE.ToString("F2") / -@Model.CurrentCylLE.ToString("F2") x @Model.CurrentAxisLE    add: @Model.CurrentAddLE.ToString("F2")</dd>
+                        </div>
+                    </div>
+                    
+                    <div class="row ml-1">
+                        <div class="col-3">
+                            <dt>Distance VA RE</dt>
+                        </div>
+                        <div class="col-3">
+                            <dt>Distance VA LE</dt>
+                        </div>
+                        <div class="col-3">
+                            <dt>Distance VA Binoc</dt>
+                        </div>
+                    </div>
+                    
+                    <div class="row ml-1 mb-3">
+                        <div class="col-3">
+                            <dd>@Model.DistanceVARE</dd>
+                        </div>
+                        <div class="col-3">
+                            <dd>@Model.DistanceVALE</dd>
+                        </div>
+                        <div class="col-3">
+                            <dd>@Model.DistanceVABinoc</dd>
+                        </div>
+                    </div>
+
+                    <div class="row ml-1">
+                        <div class="col-3">
+                            <dt>Distance Vision RE</dt>
+                        </div>
+                        <div class="col-3">
+                            <dt>Distance Vision LE</dt>
+                        </div>
+                        <div class="col-3">
+                            <dt>Distance Vision Binoc</dt>
+                        </div>
+                    </div>
+                    
+                    <div class="row ml-1 mb-3">
+                        <div class="col-3">
+                            <dd>@Model.DistanceVisionRE</dd>
+                        </div>
+                        <div class="col-3">
+                            <dd>@Model.DistanceVisionLE</dd>
+                        </div>
+                        <div class="col-3">
+                            <dd>@Model.DistanceVisionBinoc</dd>
+                        </div>
+                    </div>
+                    
+                    <div class="row ml-1">
+                        <div class="col-3">
+                            <dt>Near VA RE</dt>
+                        </div>
+                        <div class="col-3">
+                            <dt>Near VA LE</dt>
+                        </div>
+                        <div class="col-3">
+                            <dt>Near VA Binoc</dt>
+                        </div>
+                    </div>
+                    
+                    <div class="row ml-1 mb-3">
+                        <div class="col-3">
+                            <dd>@Model.NearVARE</dd>
+                        </div>
+                        <div class="col-3">
+                            <dd>@Model.NearVALE</dd>
+                        </div>
+                        <div class="col-3">
+                            <dd>@Model.NearVABinoc</dd>
+                        </div>
+                    </div>
+
+                    <div class="row ml-1">
+                        <div class="col-3">
+                            <dt>Near Vision RE</dt>
+                        </div>
+                        <div class="col-3">
+                            <dt>Near Vision LE</dt>
+                        </div>
+                        <div class="col-3">
+                            <dt>Near Vision Binoc</dt>
+                        </div>
+                    </div>
+
+                    <div class="row ml-1 mb-3">
+                        <div class="col-3">
+                            <dd>@Model.NearVisionRE</dd>
+                        </div>
+                        <div class="col-3">
+                            <dd>@Model.NearVisionLE</dd>
+                        </div>
+                        <div class="col-3">
+                            <dd>@Model.NearVisionBinoc</dd>
+                        </div>
+                    </div>
+
+                    <div class="row ml-1">
+                        <div class="col-3">
+                            <dt>OMB Near Unaided</dt>
+                        </div>
+                        <div class="col-3">
+                            <dt>OMB Dist Unaided</dt>
+                        </div>
+                    </div>
+
+                    <div class="row ml-1 mb-3">
+                        <div class="col-3">
+                            <dd>@Model.OMBNearUnaided</dd>
+                        </div>
+                        <div class="col-3">
+                            <dd>@Model.OMBDistUnaided</dd>
+                        </div>
+                    </div>
+                    
+                    <div class="row ml-1">
+                        <div class="col-3">
+                            <dt>OMB Near Aided</dt>
+                        </div>
+                        <div class="col-3">
+                            <dt>OMB Dist Aided</dt>
+                        </div>
+                    </div>
+
+                    <div class="row ml-1 mb-3">
+                        <div class="col-3">
+                            <dd>@Model.OMBNearAided</dd>
+                        </div>
+                        <div class="col-3">
+                            <dd>@Model.OMBDistUnaided</dd>
+                        </div>
+                    </div>
+
+                    <dt class="col-3 pb-1">OMB Notes</dt>
+                    <dd class="col-9 pb-3">@Model.OMBNotes</dd>
+
+                    <dt class="col-3 pb-1">Additional Tests</dt>
+                    <dd class="col-9 pb-1">@Model.AdditionalTests</dd>
+
+                </div>
+
+
+                <div role="tabpanel" class="tab-pane" id="tab3">
+                    <h3 class="mb-4"><u>Refraction</u></h3>
+                    <!------------- Refraction ---------->
+                    <div class="row ml-1">
+                        <div class="col-3">
+                            <dt>Autorefract RE</dt>
+                        </div>
+                        <div class="col-3">
+                            <dt>Autorefract LE</dt>
+                        </div>
+                    </div>
+                    
+                    <div class="row ml-1 mb-3">
+                        <div class="col-3">
+                            <dd>@Model.AutoSignR@Model.AutoSphereRE.ToString("F2") / -@Model.AutorefractCylRE.ToString("F2") x @Model.AutorefractAxisRE add:@Model.AutorefractAddRE.ToString("F2")</dd>
+                        </div>
+                        <div class="col-3">
+                            <dd>@Model.AutoSignL@Model.AutoSphereLE.ToString("F2") / -@Model.AutorefractCylLE.ToString("F2") x @Model.AutorefractAxisLE add:@Model.AutorefractAddLE.ToString("F2")</dd>
+                        </div>
+                    </div>
+                    
+                    <div class="row ml-1">
+                        <div class="col-3">
+                            <dt>Ret RE</dt>
+                        </div>
+                        <div class="col-3">
+                            <dt>Ret LE</dt>
+                        </div>
+                    </div>
+
+                    <div class="row ml-1 mb-3">
+                        <div class="col-3">
+                            <dd>@Model.RetSignR@Model.RetSphereRE.ToString("F2") / -@Model.RetCylRE.ToString("F2") x @Model.RetAxisRE</dd>
+                        </div>
+                        <div class="col-3">
+                            <dd>@Model.RetSignR@Model.RetSphereLE.ToString("F2") / -@Model.RetCylLE.ToString("F2") x @Model.RetAxisLE</dd>
+                        </div>
+                    </div>
+                    
+                    <dt class="col-3 pb-1">Drops Used</dt> 
+                    <dd class="col-9 pb-1">@Model.DropsUsed</dd>
+
+                    <div class="row ml-1">
+                        <div class="col-3">
+                            <dt>Subjective RE</dt>
+                        </div>
+                        <div class="col-3">
+                            <dt>Subjective LE</dt>
+                        </div>
+                    </div>
+
+                    <div class="row ml-1 mb-3">
+                        <div class="col-3">
+                            <dd>@Model.SubjectSignR@Model.SubjectSphereRE.ToString("F2") / -@Model.SubjectCylRE.ToString("F2") x @Model.SubjectAxisRE add:@Model.SubjectAddRE.ToString("F2")</dd>
+                        </div>
+                        <div class="col-3">
+                            <dd>@Model.SubjectSignL@Model.SubjectSphereLE.ToString("F2") / -@Model.SubjectCylLE.ToString("F2") x @Model.SubjectAxisLE add:@Model.SubjectAddLE.ToString("F2")</dd>
+                        </div>
+                    </div>
+                    
+                    <dt class="col-3 pb-1">Refraction Notes</dt>
+                    <dd class="col-9 pb-1">@Model.RefractionNotes</dd>
+
+                    <div class="row ml-2">
+                        <div class="col-3">
+                            <dt>Final VA RE</dt>
+                        </div>
+                        <div class="col-3">
+                            <dt>Final VA LE</dt>
+                        </div>
+                        <div class="col-3">
+                            <dt>Final VA Binoc</dt>
+                        </div>
+                    </div>
+
+                    <div class="row ml-2 mb-3">
+                        <div class="col-3">
+                            <dd>@Model.FinalVARE</dd>
+                        </div>
+                        <div class="col-3">
+                            <dd>@Model.FinalVALE</dd>
+                        </div>
+                        <div class="col-3">
+                            <dd>@Model.FinalVABinoc</dd>
+                        </div>
+                    </div>
+                    
+                    <dt class="col-3 pb-1">Final OMB Dist</dt>
+                    <dd class="col-9 pb-1">@Model.FinalOMBDist</dd>
+
+                    <dt class="col-3 pb-1">Final OMB Near</dt>
+                    <dd class="col-9 pb-1">@Model.FinalOMBNear</dd>
+
+                    <dt class="col-3 pb-1">Final OMB Notes</dt>
+                    <dd class="col-9 pb-1">@Model.FinalOMBNotes</dd>
+
+                    <div class="row ml-1">
+                        <div class="col-3">
+                            <dt>Final Rx RE</dt>
+                        </div>
+                        <div class="col-3">
+                            <dt>Final Rx LE</dt>
+                        </div>
+                    </div>
+                    
+                    <div class="row ml-1 mb-3">
+                        <div class="col-3">
+                            <dd>@Model.FinalSphereSignRE @Model.FinalSphereRE.ToString("F2") / -@Model.FinalCylRE.ToString("F2") x @Model.FinalAxisRE add:@Model.FinalAddRE.ToString("F2")</dd>
+                        </div>
+                        <div class="col-3">
+                            <dd>@Model.FinalSphereSignLE @Model.FinalSphereLE.ToString("F2") / -@Model.FinalCylLE.ToString("F2") x @Model.FinalAxisLE add:@Model.FinalAddLE.ToString("F2")</dd>
+                        </div>
+                    </div>
+
+                    <dt class="col-3 pb-1">Additional Refraction Tests</dt>
+                    <dd class="col-9 pb-1">@Model.AdditionalRefractionTests</dd>
+
+                </div>
+
+
+                <div role="tabpanel" class="tab-pane" id="tab4">
+                    <h3 class="mb-4"><u>Health Assessment</u></h3>
+
+                    <!----------- Ocular Exam -------------->
+
+                    <div class="row ml-1">
+                        <div class="col-1">
+                            <dt>Dilated</dt> 
+                        </div>
+                        <div class="col-2">
+                            <dt>Drug Used</dt>
+                        </div>
+                        <div class="col-3">
+                            <dt>Time Drug Administered</dt>
+                        </div>
+                    </div>
+
+                    <div class="row ml-1 mb-3">
+                        <div class="col-1">
+                            <dd>@Model.Dilated</dd>
+                        </div>
+                        <div class="col-2">
+                            <dd>@Model.DrugUsed</dd>
+                        </div>
+                        <div class="col-3">
+                            <dd>@Model.TimeDrugUsed.ToString("F2")</dd>
+                        </div>
+                    </div>
+                    
+                    <dt class="col-3 pb-1">Pupils</dt>
+                    <dd class="col-9 pb-1">@Model.PupilExam</dd>
+
+                    <div class="row ml-1">
+                        <div class="col-1">
+                            <dt>IOP RE</dt>
+                        </div>
+                        <div class="col-2">
+                            <dt>IOP LE</dt>
+                        </div>
+                        <div class="col-3">
+                            <dt>IOP Instrument</dt>
+                        </div>
+                    </div>
+
+                    <div class="row ml-1 mb-3">
+                        <div class="col-1">
+                            <dd>@Model.IOPRE</dd>
+                        </div>
+                        <div class="col-2">
+                            <dd>@Model.IOPLE</dd>
+                        </div>
+                        <div class="col-3">
+                            <dd>@Model.IOPInstrument</dd>
+                        </div>
+                    </div>
+
+                    <dt class="col-3 pb-1">IOP Time</dt>
+                    <dd class="col-9 pb-1 mb-3">@Model.IOPTime.ToString("F2")</dd>
+
+
+                    <!--------------- External --------------->
+
+                    <dt class="col-3 pb-1">Adnexa</dt>
+                    <dd class="col-9 pb-1">@Model.Adnexa</dd>
+
+                    <dt class="col-3 pb-1">Lids and Lashes</dt>
+                    <dd class="col-9 pb-1">@Model.LidsLashes</dd>
+
+                    <dt class="col-3 pb-1">Conjunctiva</dt>
+                    <dd class="col-9 pb-1">@Model.Conjunctiva</dd>
+
+                    <dt class="col-3 pb-1">Cornea</dt>
+                    <dd class="col-9 pb-1 mb-3">@Model.Cornea</dd>
+
+
+                    <!------------- Internal ---------------->
+
+                    <dt class="col-3 pb-1">Lens</dt>
+                    <dd class="col-9 pb-1">@Model.Lens</dd>
+
+                    <dt class="col-3 pb-1">Anterior Chamber</dt>
+                    <dd class="col-9 pb-1">@Model.ACExam</dd>
+
+                    <dt class="col-3 pb-1">Vitreous</dt>
+                    <dd class="col-9 pb-1">@Model.Vitreous</dd>
+
+                    <dt class="col-3 pb-1">Optic Nerve</dt>
+                    <dd class="col-9 pb-1">@Model.OpticNerve</dd>
+
+                    <dt class="col-3 pb-1">Macula</dt>
+                    <dd class="col-9 pb-1">@Model.Macula</dd>
+
+                    <dt class="col-3 pb-1">Vessels</dt>
+                    <dd class="col-9 pb-1">@Model.Vessels</dd>
+
+                    <dt class="col-3 pb-1">Periphery</dt>
+                    <dd class="col-9 pb-1">@Model.Periphery</dd>
+
+                </div>
+
+
+                <div role="tabpanel" class="tab-pane" id="tab5">
+                    <h3 class="mb-4"><u>Final</u></h3>
+
+                    <!-------------- End -------------->
+
+                    <dt class="col-2 pb-1">Additional Tests</dt>
+                    <dd class="col-10 pb-1">@Model.AdditionalTestsFinal</dd>
+
+                    <dt class="col-2 pb-1">Advice</dt>
+                    <dd class="col-10 pb-1">@Model.Advice</dd>
+
+                    <dt class="col-2 pb-1">Recommendations</dt>
+                    <dd class="col-10 pb-1">@Model.Recommendations</dd>
+
+                    <dt class="col-2 pb-1">Referrals</dt>
+                    <dd class="col-10 pb-1">@Model.Referrals</dd>
+
+                    <dt class="col-2 pb-1">Recall</dt>
+                    <dd class="col-10 pb-1">@Model.Recall</dd>
+
+                </div>
+
+        </dl>
+
+        <div>
+            <button asp-condition=@User.IsInRole("admin") class="btn btn-lg btn-danger" data-bs-toggle="modal"
+                data-bs-target="#stdeleteModal">
+                <i class="bi bi-trash-fill"></i>
+                <span>Delete</span>
+            </button>
+
+            <a class="btn btn-lg btn-warning ms-3" asp-action="Details" asp-route-id="@Model.PatientId" aria-label="cancel">
+                <i class="bi bi-arrow-left-square"></i>Back</a>
+        </div>
+
+    </div>
+
+</div>
+
+<partial name="_STDeleteModal"/>

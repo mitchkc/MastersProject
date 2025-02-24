@@ -1,0 +1,125 @@
+@model PatientViewModel
+
+<div class="card rounded shadow p-4 mt-5 mx-auto w-100 mb-5">
+
+    <div class="position-absolute top-0 start-50 translate-middle rounded-circle bg-dark p-2">
+        <svg class="text-white" width="28" height="28" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+          <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+        </svg>
+    </div>
+
+        <h3 class="text-dark my-3 mx-auto">Patients Details</h3>
+    
+
+    <div class="row">
+
+        <dl class="row">
+
+            <dt class="col-2 pb-1">Forename</dt>
+            <dd class="col-10 pb-1">@Model.Forename</dd>
+
+            <dt class="col-2 pb-1">Surname</dt>
+            <dd class="col-10 pb-1">@Model.Surname</dd>
+
+            <dt class="col-2 pb-1">Email</dt>
+            <dd class="col-10 pb-1">@Model.Email</dd>
+
+            <dt class="col-2 pb-1">Address</dt>
+            <dd class="col-10 pb-1">@Model.Address</dd>
+
+            <dt class="col-2 pb-1">Gender</dt>
+            <dd class="col-10 pb-1">@Model.Gender</dd>
+
+            <dt class="col-2 pb-1">Date of Birth</dt>
+            <dd class="col-10 pb-1">@Model.Dob.ToString("dd/MM/yyyy")</dd>
+
+            <dt class="col-2 pb-1">Age</dt>
+            <dd class="col-10 pb-1">@Model.Age</dd>
+
+            <dt class="col-2 pb-1">Mobile Number</dt>
+            <dd class="col-10 pb-1">@Model.Mobile</dd>
+
+            <dt class="col-2 pb-1">Home Number</dt>
+            <dd class="col-10 pb-1">@Model.HomeNumber</dd>
+
+            <dt class="col-2 pb-1">GP Name</dt>
+            <dd class="col-10 pb-1">@Model.GPName</dd>
+
+            <dt class="col-2 pb-1">H and C Number</dt>
+            <dd class="col-10 pb-1">@Model.HandCNum</dd>
+
+            <dt class="col-2 pb-1">GP's Address</dt>
+            <dd class="col-10 pb-1">@Model.GPAddress</dd>
+
+            <dt class="col-2 pb-1">Private or NHS?</dt>
+            <dd class="col-10 pb-1">@Model.PatientType</dd>
+
+            <dt class="col-2 pb-1">Opt In or Out?</dt>
+            <dd class="col-10 pb-1">@Model.Opt</dd>
+
+        </dl>
+
+        <div class="d-flex">
+            <div class="mr-auto">
+                <!-- nav link to Update action, pass route id parameter -->
+                <a asp-condition=@User.Identity.IsAuthenticated asp-action="Edit" asp-route-id="@Model.Pid"
+                    class="btn btn-primary" aria-label="edit">
+                    <i class="bi bi-pen-fill"></i><span>Edit</span>
+                </a>
+            </div>
+            <div class="mr-auto">
+                <button asp-condition=@User.Identity.IsAuthenticated class="btn btn-danger" data-bs-toggle="modal"
+                    data-bs-target="#deleteModal">
+                    <i class="bi bi-trash-fill"></i>
+                    <span>Delete</span>
+                </button>
+            </div>
+            <div class="mr-auto">
+                <a asp-action="Index" class="btn btn-warning ms-5" aria-label="Patient Search">
+                    <i class="bi bi-arrow-left-square"></i><span>Back To Search</span>
+                </a>
+            </div>
+           
+            <div>
+                <a asp-action="SightTestCreate" asp-route-id="@Model.Pid" class="btn btn-success ms-5"
+                    aria-label="New Sight Test">
+                    <i class="bi bi-plus-square"></i><span>New Sight Test</span>
+                </a>
+            </div>
+            <div>
+                <a asp-action="TriageCreate" asp-route-id="@Model.Pid" class="btn btn-success ms-4"
+                    aria-label="New Triage">
+                    <i class="bi bi-plus-square"></i><span>New Triage</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="mt-5 mb-5">
+                <button class="btn btn-secondary ms-5" type="button" data-toggle="collapse" data-target="#STs" aria-expanded="false"
+                 aria-controls="STs" aria-label="sight tests">
+                    <i class="bi bi-list"></i><span>Sight Tests</span>
+                </button>
+
+                <div class="collapse" id="STs">
+                    <div>
+                        <partial name="_STList"/>
+                    </div>
+                </div>
+
+                <button class="btn btn-secondary ms-5" type="button" data-toggle="collapse" data-target="#Triages" aria-expanded="false"
+                 aria-controls="Triages" aria-label="triages">
+                    <i class="bi bi-list"></i><span>Triages</span>
+                </button>
+
+                <div class="collapse" id="Triages">
+                    <div>
+                        <partial name="_TriageList"/>
+                    </div>
+                </div>
+        </div>
+
+    </div>
+
+</div>
+
+<partial name="_PxDeletemodal" />
